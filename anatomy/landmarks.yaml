@@ -1,0 +1,378 @@
+# 体表骨性标志（康复触诊定位用）。
+#
+# 每个标志定义为"某块骨在某个解剖方向上的极值点"：
+#   bone     bones.yaml 中的骨 id
+#   mesh     （可选）当 bone 由多块网格合并时，用正则限定其中一块（匹配 Z-Anatomy 对象名，不含 .r/.l）
+#   dir      方向权重，键为解剖方位：anterior posterior superior inferior lateral medial
+#            （lateral/medial 随左右侧自动翻转）。取该方向上最远的骨表面顶点。
+#   within   （可选）只在骨包围盒的某一段内找：{axis: superior|anterior|lateral, frac: [a, b]}（0=该轴最小端，1=最大端）
+#   midline  true -> 中线结构，只生成一个，且顶点限制在 |x| < 8 mm 内
+# related  （可选）教材中与该标志直接相关的肌肉 id（起止点在此附近）；与算法找到的 1.5 cm 内邻近肌肉合并显示。
+# project  （可选）投射到皮肤的方向，缺省等于 dir（骨极值方向不一定是通向皮肤的最近方向，如髂嵴最高点）。
+# 体表位置 = 从骨点沿 project 方向发射的射线与皮肤的第一个交点。
+#
+# 触诊提示参照 Kendall / Neumann / Biel《Trail Guide to the Body》的通行描述整理，待临床确认。
+
+landmarks:
+  # ---------------- 肩 ----------------
+  - id: acromion
+    bone: scapula
+    related: [deltoid_acromial, trapezius_transverse]
+    dir: {lateral: 1, superior: 1}
+    regions: [shoulder]
+    name:
+      zh: "肩峰（外侧角）"
+      en: "Acromion (lateral angle)"
+      la: "Acromion"
+    palpation:
+      zh: "沿肩胛冈向外侧触摸至肩部最高、最外侧的骨性平台；三角肌中束起点"
+      en: "Follow the spine of the scapula laterally to the bony shelf at the top of the shoulder; origin of middle deltoid"
+
+  - id: coracoid
+    bone: scapula
+    related: [pectoralis_minor, coracobrachialis, biceps_short]
+    dir: {anterior: 1, lateral: 0.2}
+    regions: [shoulder]
+    name:
+      zh: "喙突"
+      en: "Coracoid process"
+      la: "Processus coracoideus"
+    palpation:
+      zh: "锁骨外侧 1/3 下方、三角肌胸大肌间沟深处可触及的骨性突起；胸小肌、肱二头肌短头、喙肱肌附着"
+      en: "Deep in the deltopectoral groove, below the lateral third of the clavicle; attachment of pectoralis minor, short head of biceps and coracobrachialis"
+
+  - id: scapula_inferior_angle
+    bone: scapula
+    related: [teres_major, serratus_anterior, latissimus_dorsi]
+    dir: {inferior: 1, medial: 0.3}
+    project: {posterior: 1}
+    regions: [shoulder]
+    name:
+      zh: "肩胛下角"
+      en: "Inferior angle of scapula"
+      la: "Angulus inferior scapulae"
+    palpation:
+      zh: "约平 T7–T8，沿肩胛骨内侧缘向下触及的尖端；评估肩胛骨上回旋与翼状肩胛"
+      en: "Roughly at T7–T8; follow the medial border down to its tip; used to assess scapular upward rotation and winging"
+
+  - id: scapula_superior_angle
+    bone: scapula
+    related: [levator_scapulae]
+    dir: {superior: 1, medial: 0.5}
+    project: {superior: 1, posterior: 0.3}
+    regions: [shoulder]
+    name:
+      zh: "肩胛上角"
+      en: "Superior angle of scapula"
+      la: "Angulus superior scapulae"
+    palpation:
+      zh: "约平 T2，斜方肌下方；肩胛提肌附着"
+      en: "About T2, deep to trapezius; insertion of levator scapulae"
+
+  - id: greater_tubercle
+    bone: humerus
+    related: [supraspinatus, infraspinatus, teres_minor]
+    dir: {lateral: 1, superior: 0.3}
+    within: {axis: superior, frac: [0.75, 1.0]}
+    regions: [shoulder]
+    name:
+      zh: "肱骨大结节"
+      en: "Greater tubercle of humerus"
+      la: "Tuberculum majus humeri"
+    palpation:
+      zh: "肩峰外侧缘下方 2–3 cm、三角肌深面的骨性隆起；冈上肌、冈下肌、小圆肌止点"
+      en: "2–3 cm below the lateral acromion, deep to deltoid; insertion of supraspinatus, infraspinatus and teres minor"
+
+  - id: acromial_end_clavicle
+    bone: clavicle
+    related: [trapezius_descending, deltoid_clavicular]
+    dir: {lateral: 1}
+    project: {superior: 1}
+    regions: [shoulder]
+    name:
+      zh: "锁骨肩峰端（肩锁关节）"
+      en: "Acromial end of clavicle (AC joint)"
+      la: "Extremitas acromialis claviculae"
+    palpation:
+      zh: "沿锁骨向外侧至其与肩峰相接处的小台阶；肩锁关节"
+      en: "Follow the clavicle laterally to the small step where it meets the acromion; acromioclavicular joint"
+
+  - id: jugular_notch
+    bone: manubrium
+    dir: {superior: 1}
+    project: {anterior: 1, superior: 0.5}
+    midline: true
+    regions: [shoulder]
+    name:
+      zh: "胸骨上切迹"
+      en: "Jugular notch"
+      la: "Incisura jugularis"
+    palpation:
+      zh: "两侧锁骨内侧端之间、胸骨柄上缘的凹陷"
+      en: "The dip at the top of the manubrium between the medial ends of the clavicles"
+
+  - id: c7_spinous
+    bone: cervical_spine
+    related: [trapezius_transverse, rhomboid_minor]
+    mesh: '^Vertebra C7$'
+    dir: {posterior: 1}
+    midline: true
+    regions: [shoulder, lumbar]
+    name:
+      zh: "第7颈椎棘突（隆椎）"
+      en: "C7 spinous process (vertebra prominens)"
+      la: "Processus spinosus vertebrae cervicalis VII"
+    palpation:
+      zh: "颈根部最突出的棘突，颈部屈伸时 C7 随之滑动而 T1 不动；斜方肌、菱形肌起点"
+      en: "The most prominent spinous process at the base of the neck; moves with neck flexion while T1 stays still; origin of trapezius and rhomboids"
+
+  # ---------------- 腰 ----------------
+  - id: t12_spinous
+    bone: thoracic_spine
+    related: [trapezius_ascending, latissimus_dorsi]
+    mesh: '^Vertebra T12$'
+    dir: {posterior: 1}
+    midline: true
+    regions: [lumbar]
+    name:
+      zh: "第12胸椎棘突"
+      en: "T12 spinous process"
+      la: "Processus spinosus vertebrae thoracicae XII"
+    palpation:
+      zh: "沿第12肋向内侧触及的棘突；胸腰交界"
+      en: "Reached by following the 12th rib medially; thoracolumbar junction"
+
+  - id: l1_spinous
+    bone: vertebra_l1
+    dir: {posterior: 1}
+    midline: true
+    regions: [lumbar]
+    name:
+      zh: "第1腰椎棘突"
+      en: "L1 spinous process"
+      la: "Processus spinosus vertebrae lumbalis I"
+    palpation:
+      zh: "T12 棘突下一个棘突"
+      en: "The spinous process below T12"
+
+  - id: l3_spinous
+    bone: vertebra_l3
+    dir: {posterior: 1}
+    midline: true
+    regions: [lumbar]
+    name:
+      zh: "第3腰椎棘突"
+      en: "L3 spinous process"
+      la: "Processus spinosus vertebrae lumbalis III"
+    palpation:
+      zh: "约平脐上缘水平"
+      en: "About level with the upper umbilicus"
+
+  - id: l4_spinous
+    bone: vertebra_l4
+    related: [multifidus_lumborum, interspinales_lumborum]
+    dir: {posterior: 1}
+    midline: true
+    regions: [lumbar]
+    name:
+      zh: "第4腰椎棘突"
+      en: "L4 spinous process"
+      la: "Processus spinosus vertebrae lumbalis IV"
+    palpation:
+      zh: "两侧髂嵴最高点连线（Tuffier 线）通过 L4 棘突或 L4–L5 间隙；腰椎穿刺与腰椎节段定位标志"
+      en: "The line joining the highest points of the iliac crests (Tuffier's line) crosses the L4 spinous process or L4–L5 space; used to count lumbar levels"
+
+  - id: l5_spinous
+    bone: vertebra_l5
+    dir: {posterior: 1}
+    midline: true
+    regions: [lumbar]
+    name:
+      zh: "第5腰椎棘突"
+      en: "L5 spinous process"
+      la: "Processus spinosus vertebrae lumbalis V"
+    palpation:
+      zh: "L4 棘突下一个，位于两侧髂后上棘连线稍上方"
+      en: "Next below L4; just above the line joining the PSISs"
+
+  - id: twelfth_rib
+    bone: ribs
+    related: [quadratus_lumborum, serratus_posterior_inferior, internal_oblique]
+    mesh: '^Twelfth rib$'
+    dir: {lateral: 1, inferior: 0.6}
+    regions: [lumbar]
+    name:
+      zh: "第12肋（游离端）"
+      en: "12th rib (free end)"
+      la: "Costa XII"
+    palpation:
+      zh: "竖脊肌外侧、髂嵴上方的游离肋尖；腰方肌、腹内斜肌附着"
+      en: "The free tip lateral to erector spinae above the iliac crest; attachment of quadratus lumborum and internal oblique"
+
+  - id: xiphoid_tip
+    bone: xiphoid
+    related: [rectus_abdominis]
+    dir: {inferior: 1}
+    project: {anterior: 1}
+    midline: true
+    regions: [lumbar]
+    name:
+      zh: "剑突尖"
+      en: "Tip of xiphoid process"
+      la: "Processus xiphoideus"
+    palpation:
+      zh: "胸骨体下端、肋弓夹角处的小突起；腹直肌附着"
+      en: "Small projection at the lower end of the sternum between the costal margins; attachment of rectus abdominis"
+
+  # ---------------- 髋 ----------------
+  - id: asis
+    bone: hip_bone
+    related: [sartorius, tensor_fasciae_latae]
+    dir: {anterior: 1, lateral: 1, superior: 0.6}
+    regions: [hip, lumbar]
+    name:
+      zh: "髂前上棘（ASIS）"
+      en: "Anterior superior iliac spine (ASIS)"
+      la: "Spina iliaca anterior superior"
+    palpation:
+      zh: "髂嵴向前的终点，仰卧位在髋前外侧最前突的骨点；缝匠肌、阔筋膜张肌起点，腹股沟韧带外侧附着"
+      en: "The anterior end of the iliac crest, the most forward bony point at the front of the hip; origin of sartorius and tensor fasciae latae; lateral attachment of the inguinal ligament"
+
+  - id: psis
+    bone: hip_bone
+    related: [multifidus_lumborum, gluteus_maximus]
+    dir: {posterior: 1, superior: 0.8}
+    regions: [hip, lumbar]
+    name:
+      zh: "髂后上棘（PSIS）"
+      en: "Posterior superior iliac spine (PSIS)"
+      la: "Spina iliaca posterior superior"
+    palpation:
+      zh: "骶骨两侧\"腰窝\"（Venus 窝）处的骨性隆起，约平 S2；骶髂关节定位"
+      en: "The bony bump at the \"dimple\" on each side of the sacrum, about S2; landmark for the sacroiliac joint"
+
+  - id: iliac_crest
+    bone: hip_bone
+    related: [external_oblique, internal_oblique, quadratus_lumborum, latissimus_dorsi, tensor_fasciae_latae, gluteus_medius]
+    dir: {superior: 1}
+    project: {lateral: 1, superior: 0.3}
+    regions: [hip, lumbar]
+    name:
+      zh: "髂嵴最高点"
+      en: "Highest point of iliac crest"
+      la: "Crista iliaca"
+    palpation:
+      zh: "双手叉腰时手掌下的骨性边缘；两侧最高点连线约平 L4"
+      en: "The bony rim under the hands when resting them on the hips; the line between both highest points is about L4"
+
+  - id: greater_trochanter
+    bone: femur
+    related: [gluteus_medius, gluteus_minimus, piriformis, obturator_internus, gemellus_superior, gemellus_inferior, quadratus_femoris]
+    dir: {lateral: 1}
+    within: {axis: superior, frac: [0.78, 1.0]}
+    regions: [hip]
+    name:
+      zh: "股骨大转子"
+      en: "Greater trochanter"
+      la: "Trochanter major"
+    palpation:
+      zh: "髋外侧最宽处的骨性隆起；臀中肌、臀小肌及髋深层外旋肌止点，髂胫束滑过其表面"
+      en: "The widest bony point on the outer hip; insertion of gluteus medius/minimus and the deep rotators; the iliotibial tract glides over it"
+
+  - id: ischial_tuberosity
+    bone: hip_bone
+    related: [biceps_femoris_long, semitendinosus, semimembranosus, adductor_magnus, quadratus_femoris]
+    dir: {inferior: 1, posterior: 0.6}
+    project: {posterior: 1, inferior: 0.7}
+    regions: [hip]
+    name:
+      zh: "坐骨结节"
+      en: "Ischial tuberosity"
+      la: "Tuber ischiadicum"
+    palpation:
+      zh: "坐位时承重的骨点，臀大肌下缘深面；腘绳肌共同起点"
+      en: "The weight-bearing point when sitting, deep to the lower edge of gluteus maximus; common origin of the hamstrings"
+
+  # ---------------- 膝 ----------------
+  - id: patella_apex_front
+    bone: patella
+    related: [rectus_femoris, vastus_lateralis, vastus_medialis, vastus_intermedius]
+    dir: {anterior: 1}
+    regions: [knee]
+    name:
+      zh: "髌骨前面"
+      en: "Anterior surface of patella"
+      la: "Facies anterior patellae"
+    palpation:
+      zh: "膝前皮下的圆形骨；股四头肌腱止于其上缘，髌韧带起于其下极"
+      en: "The round bone under the skin at the front of the knee; quadriceps tendon attaches above, patellar ligament below"
+
+  - id: tibial_tuberosity
+    bone: tibia
+    related: [rectus_femoris, vastus_lateralis, vastus_medialis, vastus_intermedius]
+    dir: {anterior: 1}
+    within: {axis: superior, frac: [0.8, 1.0]}
+    regions: [knee]
+    name:
+      zh: "胫骨粗隆"
+      en: "Tibial tuberosity"
+      la: "Tuberositas tibiae"
+    palpation:
+      zh: "髌骨下方约 3 cm、胫骨前方的骨性隆起；髌韧带止点（股四头肌）"
+      en: "About 3 cm below the patella at the front of the tibia; insertion of the patellar ligament (quadriceps)"
+
+  - id: gerdy_tubercle
+    bone: tibia
+    related: [iliotibial_tract, tensor_fasciae_latae]
+    dir: {lateral: 1, anterior: 0.4}
+    within: {axis: superior, frac: [0.8, 1.0]}
+    regions: [knee]
+    name:
+      zh: "Gerdy 结节（胫骨外侧髁）"
+      en: "Gerdy's tubercle (lateral tibial condyle)"
+      la: "Tuberculum tractus iliotibialis"
+    palpation:
+      zh: "胫骨粗隆外侧约 2–3 cm、关节线下方的骨性隆起；髂胫束止点"
+      en: "2–3 cm lateral to the tibial tuberosity just below the joint line; insertion of the iliotibial tract"
+
+  - id: lateral_femoral_epicondyle
+    bone: femur
+    related: [popliteus, gastrocnemius_lateral]
+    dir: {lateral: 1}
+    within: {axis: superior, frac: [0.0, 0.2]}
+    regions: [knee]
+    name:
+      zh: "股骨外上髁"
+      en: "Lateral femoral epicondyle"
+      la: "Epicondylus lateralis femoris"
+    palpation:
+      zh: "膝外侧关节线上方的骨性隆起；外侧副韧带、腘肌起点"
+      en: "Bony prominence above the lateral joint line; origin of the lateral collateral ligament and popliteus"
+
+  - id: medial_femoral_epicondyle
+    bone: femur
+    related: [gastrocnemius_medial, adductor_magnus]
+    dir: {medial: 1}
+    within: {axis: superior, frac: [0.0, 0.2]}
+    regions: [knee]
+    name:
+      zh: "股骨内上髁"
+      en: "Medial femoral epicondyle"
+      la: "Epicondylus medialis femoris"
+    palpation:
+      zh: "膝内侧关节线上方的骨性隆起；内侧副韧带起点"
+      en: "Bony prominence above the medial joint line; origin of the medial collateral ligament"
+
+  - id: fibular_head
+    bone: fibula
+    related: [biceps_femoris_long, biceps_femoris_short]
+    dir: {superior: 1}
+    project: {lateral: 1}
+    regions: [knee]
+    name:
+      zh: "腓骨头"
+      en: "Head of fibula"
+      la: "Caput fibulae"
+    palpation:
+      zh: "膝外侧关节线下方约 2 cm 的圆形骨点；股二头肌腱与外侧副韧带止点，腓总神经在其后下方绕过"
+      en: "Round bony point about 2 cm below the lateral joint line; insertion of biceps femoris and the lateral collateral ligament; the common fibular nerve wraps behind and below it"

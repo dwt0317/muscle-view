@@ -1,0 +1,1608 @@
+# 肌肉表（唯一数据源）。覆盖肩、髋、膝、腰四个部位。
+#
+# 内容依据: Kendall《Muscles: Testing and Function》、Neumann《Kinesiology of the
+# Musculoskeletal System》、Gray's Anatomy 的通行描述整理。
+# *** 所有起止点与功能文字均为整理稿，尚未经临床审核（界面上标注"待临床确认"）。 ***
+#
+# id               内部 ID（小写蛇形）
+# za               Z-Anatomy 网格基础名（左右侧自动补 .r/.l）。注意 Z-Anatomy 的
+#                  trapezius 升部/降部名称与实际位置相反，下面已按几何位置纠正（见各条注释）。
+# regions          所属部位（可多个）
+# group            分组（见文件末尾 groups）
+# layer            superficial | intermediate | deep（相对皮肤的深浅）
+# kind             muscle(默认) | fascia（髂胫束为筋膜，不参与收缩着色）
+# origin_bones / insertion_bones   起点/止点所在骨（bones.yaml 的 id），用于起止点自动提取
+# tendinous: true  肌肉经长腱/腱膜止于骨，网格上看不到直接接触，起止点提取要放宽阈值
+# via              （可选）肌肉绕过骨的途经点，用于肌肉长度：路径 = 起点中心 -> via -> 止点中心。
+#                  {bone, dir, within(可选)}：该骨在某解剖方向上的极值点（同 landmarks.yaml 的取点方式）。
+#                  没有 via 的肌肉用起点中心到止点中心的直线。via 不影响显示，只影响收缩/舒张着色。
+
+muscles:
+  # ======================= 肩 =======================
+  - id: deltoid_clavicular
+    za: Clavicular part of deltoid muscle
+    regions: [shoulder]
+    group: deltoid
+    layer: superficial
+    name:
+      zh: "三角肌锁骨部（前束）"
+      en: "Deltoid, clavicular part"
+      la: "M. deltoideus, pars clavicularis"
+    origin:
+      zh: "锁骨外侧 1/3 前缘"
+      en: "Anterior border of lateral third of clavicle"
+    insertion:
+      zh: "肱骨三角肌粗隆"
+      en: "Deltoid tuberosity of humerus"
+    origin_bones: [clavicle]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩前屈、水平内收、内旋"
+      en: "Shoulder flexion, horizontal adduction, internal rotation"
+
+  - id: deltoid_acromial
+    za: Acromial part of deltoid muscle
+    regions: [shoulder]
+    group: deltoid
+    layer: superficial
+    name:
+      zh: "三角肌肩峰部（中束）"
+      en: "Deltoid, acromial part"
+      la: "M. deltoideus, pars acromialis"
+    origin:
+      zh: "肩峰外缘"
+      en: "Lateral margin of acromion"
+    insertion:
+      zh: "肱骨三角肌粗隆"
+      en: "Deltoid tuberosity of humerus"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩外展（主要动力，15°–90°）"
+      en: "Shoulder abduction (prime mover, 15°–90°)"
+
+  - id: deltoid_spinal
+    za: Scapular spinal part of deltoid muscle
+    regions: [shoulder]
+    group: deltoid
+    layer: superficial
+    name:
+      zh: "三角肌肩胛冈部（后束）"
+      en: "Deltoid, spinal part"
+      la: "M. deltoideus, pars spinalis"
+    origin:
+      zh: "肩胛冈下缘"
+      en: "Inferior border of spine of scapula"
+    insertion:
+      zh: "肱骨三角肌粗隆"
+      en: "Deltoid tuberosity of humerus"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩后伸、水平外展、外旋"
+      en: "Shoulder extension, horizontal abduction, external rotation"
+
+  - id: supraspinatus
+    za: Supraspinatus muscle
+    regions: [shoulder]
+    group: rotator_cuff
+    layer: deep
+    name:
+      zh: "冈上肌"
+      en: "Supraspinatus"
+      la: "M. supraspinatus"
+    origin:
+      zh: "肩胛骨冈上窝"
+      en: "Supraspinous fossa of scapula"
+    insertion:
+      zh: "肱骨大结节上部压迹"
+      en: "Superior facet of greater tubercle of humerus"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "启动肩外展（0°–15°），稳定肱骨头于关节盂"
+      en: "Initiates abduction (0°–15°); compresses humeral head into glenoid"
+
+  - id: infraspinatus
+    za: Infraspinatus muscle
+    regions: [shoulder]
+    group: rotator_cuff
+    layer: deep
+    name:
+      zh: "冈下肌"
+      en: "Infraspinatus"
+      la: "M. infraspinatus"
+    origin:
+      zh: "肩胛骨冈下窝"
+      en: "Infraspinous fossa of scapula"
+    insertion:
+      zh: "肱骨大结节中部压迹"
+      en: "Middle facet of greater tubercle of humerus"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩外旋，稳定肱骨头"
+      en: "Shoulder external rotation; stabilises humeral head"
+
+  - id: teres_minor
+    za: Teres minor muscle
+    regions: [shoulder]
+    group: rotator_cuff
+    layer: deep
+    name:
+      zh: "小圆肌"
+      en: "Teres minor"
+      la: "M. teres minor"
+    origin:
+      zh: "肩胛骨外侧缘上 2/3 背面"
+      en: "Dorsal surface of upper two thirds of lateral border of scapula"
+    insertion:
+      zh: "肱骨大结节下部压迹"
+      en: "Inferior facet of greater tubercle of humerus"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩外旋，稳定肱骨头"
+      en: "Shoulder external rotation; stabilises humeral head"
+
+  - id: subscapularis
+    za: Subscapularis muscle
+    regions: [shoulder]
+    group: rotator_cuff
+    layer: deep
+    name:
+      zh: "肩胛下肌"
+      en: "Subscapularis"
+      la: "M. subscapularis"
+    origin:
+      zh: "肩胛骨肩胛下窝"
+      en: "Subscapular fossa"
+    insertion:
+      zh: "肱骨小结节"
+      en: "Lesser tubercle of humerus"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩内旋，前方稳定肱骨头"
+      en: "Shoulder internal rotation; anterior stabiliser of humeral head"
+
+  - id: teres_major
+    za: Teres major muscle
+    regions: [shoulder]
+    group: back_arm
+    layer: superficial
+    name:
+      zh: "大圆肌"
+      en: "Teres major"
+      la: "M. teres major"
+    origin:
+      zh: "肩胛骨下角及外侧缘下部背面"
+      en: "Inferior angle and lower lateral border of scapula (dorsal)"
+    insertion:
+      zh: "肱骨小结节嵴"
+      en: "Crest of lesser tubercle of humerus"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩后伸、内收、内旋"
+      en: "Shoulder extension, adduction, internal rotation"
+
+  - id: pectoralis_major_clavicular
+    za: Clavicular head of pectoralis major muscle
+    regions: [shoulder]
+    group: pectoral
+    layer: superficial
+    name:
+      zh: "胸大肌锁骨部"
+      en: "Pectoralis major, clavicular head"
+      la: "M. pectoralis major, pars clavicularis"
+    origin:
+      zh: "锁骨内侧半"
+      en: "Medial half of clavicle"
+    insertion:
+      zh: "肱骨大结节嵴（结节间沟外侧唇）"
+      en: "Crest of greater tubercle (lateral lip of intertubercular sulcus)"
+    origin_bones: [clavicle]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩前屈、水平内收、内旋"
+      en: "Shoulder flexion, horizontal adduction, internal rotation"
+
+  - id: pectoralis_major_sternocostal
+    za: Sternocostal head of pectoralis major muscle
+    regions: [shoulder]
+    group: pectoral
+    layer: superficial
+    name:
+      zh: "胸大肌胸肋部"
+      en: "Pectoralis major, sternocostal head"
+      la: "M. pectoralis major, pars sternocostalis"
+    origin:
+      zh: "胸骨前面及第 1–6 肋软骨"
+      en: "Anterior sternum and costal cartilages 1–6"
+    insertion:
+      zh: "肱骨大结节嵴（结节间沟外侧唇）"
+      en: "Crest of greater tubercle (lateral lip of intertubercular sulcus)"
+    origin_bones: [manubrium, sternum_body, costal_cartilages]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩内收、内旋，由屈位后伸"
+      en: "Shoulder adduction, internal rotation; extension from flexed position"
+
+  - id: pectoralis_major_abdominal
+    za: (Abdominal part of pectoralis major muscle)
+    regions: [shoulder]
+    group: pectoral
+    layer: superficial
+    name:
+      zh: "胸大肌腹部"
+      en: "Pectoralis major, abdominal part"
+      la: "M. pectoralis major, pars abdominalis"
+    origin:
+      zh: "腹直肌鞘前层（第 6–7 肋软骨附近）"
+      en: "Anterior rectus sheath (near costal cartilages 6–7)"
+    insertion:
+      zh: "肱骨大结节嵴（结节间沟外侧唇）"
+      en: "Crest of greater tubercle (lateral lip of intertubercular sulcus)"
+    origin_bones: [costal_cartilages]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩下压、内收，由屈位后伸"
+      en: "Shoulder depression, adduction; extension from flexed position"
+
+  - id: pectoralis_minor
+    za: Pectoralis minor muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: intermediate
+    name:
+      zh: "胸小肌"
+      en: "Pectoralis minor"
+      la: "M. pectoralis minor"
+    origin:
+      zh: "第 3–5 肋骨外面"
+      en: "Outer surfaces of ribs 3–5"
+    insertion:
+      zh: "肩胛骨喙突"
+      en: "Coracoid process of scapula"
+    origin_bones: [ribs]
+    insertion_bones: [scapula]
+    function:
+      zh: "肩胛前伸、下压、前倾"
+      en: "Scapular protraction, depression, anterior tilt"
+
+  - id: latissimus_dorsi
+    za: Latissimus dorsi muscle
+    regions: [shoulder, lumbar]
+    group: back_arm
+    layer: superficial
+    name:
+      zh: "背阔肌"
+      en: "Latissimus dorsi"
+      la: "M. latissimus dorsi"
+    origin:
+      zh: "T7–L5 棘突、胸腰筋膜、髂嵴后部、下 3–4 肋、肩胛下角"
+      en: "Spinous processes T7–L5 via thoracolumbar fascia, posterior iliac crest, lower 3–4 ribs, inferior angle of scapula"
+    insertion:
+      zh: "肱骨结节间沟底"
+      en: "Floor of intertubercular sulcus of humerus"
+    origin_bones: [hip_bone, thoracic_spine, ribs, scapula]
+    insertion_bones: [humerus]
+    tendinous: true
+    function:
+      zh: "肩后伸、内收、内旋；经胸腰筋膜参与腰椎后伸"
+      en: "Shoulder extension, adduction, internal rotation; assists lumbar extension via thoracolumbar fascia"
+
+  # Z-Anatomy 将斜方肌升/降部命名颠倒（其 "Ascending part" 位于颈部，"Descending part" 延伸至 T12）。
+  # 此处按实际几何位置映射：上部纤维=降部(descending)，下部纤维=升部(ascending)。
+  - id: trapezius_descending
+    za: Ascending part of trapezius muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: superficial
+    name:
+      zh: "斜方肌上部（降部）"
+      en: "Trapezius, upper (descending) part"
+      la: "M. trapezius, pars descendens"
+    origin:
+      zh: "枕外隆凸、上项线、项韧带"
+      en: "External occipital protuberance, superior nuchal line, ligamentum nuchae"
+    insertion:
+      zh: "锁骨外侧 1/3、肩峰"
+      en: "Lateral third of clavicle, acromion"
+    origin_bones: [skull, cervical_spine]
+    insertion_bones: [clavicle, scapula]
+    function:
+      zh: "肩胛上提、上回旋"
+      en: "Scapular elevation and upward rotation"
+
+  - id: trapezius_transverse
+    za: Transverse part of trapezius muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: superficial
+    name:
+      zh: "斜方肌中部（横部）"
+      en: "Trapezius, middle (transverse) part"
+      la: "M. trapezius, pars transversa"
+    origin:
+      zh: "C7–T3 棘突"
+      en: "Spinous processes C7–T3"
+    insertion:
+      zh: "肩峰、肩胛冈上缘"
+      en: "Acromion and superior border of spine of scapula"
+    origin_bones: [cervical_spine, thoracic_spine]
+    insertion_bones: [scapula]
+    function:
+      zh: "肩胛后缩"
+      en: "Scapular retraction"
+
+  - id: trapezius_ascending
+    za: Descending part of trapezius muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: superficial
+    name:
+      zh: "斜方肌下部（升部）"
+      en: "Trapezius, lower (ascending) part"
+      la: "M. trapezius, pars ascendens"
+    origin:
+      zh: "T4–T12 棘突"
+      en: "Spinous processes T4–T12"
+    insertion:
+      zh: "肩胛冈内侧端（冈三角）"
+      en: "Medial end of spine of scapula (trigonum spinae)"
+    origin_bones: [thoracic_spine]
+    insertion_bones: [scapula]
+    function:
+      zh: "肩胛下压、上回旋"
+      en: "Scapular depression and upward rotation"
+
+  - id: rhomboid_major
+    za: Rhomboid major muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: intermediate
+    name:
+      zh: "大菱形肌"
+      en: "Rhomboid major"
+      la: "M. rhomboideus major"
+    origin:
+      zh: "T2–T5 棘突"
+      en: "Spinous processes T2–T5"
+    insertion:
+      zh: "肩胛骨内侧缘（肩胛冈以下）"
+      en: "Medial border of scapula below the spine"
+    origin_bones: [thoracic_spine]
+    insertion_bones: [scapula]
+    function:
+      zh: "肩胛后缩、下回旋"
+      en: "Scapular retraction and downward rotation"
+
+  - id: rhomboid_minor
+    za: Rhomboid minor muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: intermediate
+    name:
+      zh: "小菱形肌"
+      en: "Rhomboid minor"
+      la: "M. rhomboideus minor"
+    origin:
+      zh: "C7–T1 棘突"
+      en: "Spinous processes C7–T1"
+    insertion:
+      zh: "肩胛冈根部内侧缘"
+      en: "Medial border of scapula at root of spine"
+    origin_bones: [cervical_spine, thoracic_spine]
+    insertion_bones: [scapula]
+    function:
+      zh: "肩胛后缩、下回旋"
+      en: "Scapular retraction and downward rotation"
+
+  - id: levator_scapulae
+    za: Levator scapulae
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: intermediate
+    name:
+      zh: "肩胛提肌"
+      en: "Levator scapulae"
+      la: "M. levator scapulae"
+    origin:
+      zh: "C1–C4 横突后结节"
+      en: "Posterior tubercles of transverse processes C1–C4"
+    insertion:
+      zh: "肩胛骨上角及内侧缘上部"
+      en: "Superior angle and upper medial border of scapula"
+    origin_bones: [cervical_spine]
+    insertion_bones: [scapula]
+    function:
+      zh: "肩胛上提、下回旋"
+      en: "Scapular elevation and downward rotation"
+
+  - id: serratus_anterior
+    za: Serratus anterior muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: superficial
+    name:
+      zh: "前锯肌"
+      en: "Serratus anterior"
+      la: "M. serratus anterior"
+    origin:
+      zh: "第 1–8（9）肋外面"
+      en: "Outer surfaces of ribs 1–8 (9)"
+    insertion:
+      zh: "肩胛骨内侧缘前面及下角"
+      en: "Anterior surface of medial border and inferior angle of scapula"
+    origin_bones: [ribs]
+    insertion_bones: [scapula]
+    function:
+      zh: "肩胛前伸、上回旋，使肩胛贴紧胸廓"
+      en: "Scapular protraction and upward rotation; holds scapula against thorax"
+
+  - id: subclavius
+    za: Subclavius muscle
+    regions: [shoulder]
+    group: scapular_stabilizers
+    layer: intermediate
+    name:
+      zh: "锁骨下肌"
+      en: "Subclavius"
+      la: "M. subclavius"
+    origin:
+      zh: "第 1 肋及肋软骨"
+      en: "First rib and its cartilage"
+    insertion:
+      zh: "锁骨中 1/3 下面"
+      en: "Inferior surface of middle third of clavicle"
+    origin_bones: [ribs, costal_cartilages]
+    insertion_bones: [clavicle]
+    function:
+      zh: "下压并稳定锁骨"
+      en: "Depresses and stabilises clavicle"
+
+  - id: coracobrachialis
+    za: Coracobrachialis muscle
+    regions: [shoulder]
+    group: arm
+    layer: intermediate
+    name:
+      zh: "喙肱肌"
+      en: "Coracobrachialis"
+      la: "M. coracobrachialis"
+    origin:
+      zh: "肩胛骨喙突尖"
+      en: "Apex of coracoid process"
+    insertion:
+      zh: "肱骨内侧中部"
+      en: "Medial surface of humerus, mid-shaft"
+    origin_bones: [scapula]
+    insertion_bones: [humerus]
+    function:
+      zh: "肩前屈、内收"
+      en: "Shoulder flexion and adduction"
+
+  - id: biceps_long
+    za: Long head of biceps brachii
+    regions: [shoulder]
+    group: arm
+    layer: superficial
+    name:
+      zh: "肱二头肌长头"
+      en: "Biceps brachii, long head"
+      la: "M. biceps brachii, caput longum"
+    origin:
+      zh: "肩胛骨盂上结节"
+      en: "Supraglenoid tubercle of scapula"
+    insertion:
+      zh: "桡骨粗隆、前臂筋膜"
+      en: "Radial tuberosity and bicipital aponeurosis"
+    origin_bones: [scapula]
+    insertion_bones: [forearm_hand]
+    tendinous: true
+    function:
+      zh: "肩前屈、肘屈、前臂旋后"
+      en: "Shoulder flexion, elbow flexion, forearm supination"
+
+  - id: biceps_short
+    za: Short head of biceps brachii
+    regions: [shoulder]
+    group: arm
+    layer: superficial
+    name:
+      zh: "肱二头肌短头"
+      en: "Biceps brachii, short head"
+      la: "M. biceps brachii, caput breve"
+    origin:
+      zh: "肩胛骨喙突尖"
+      en: "Apex of coracoid process"
+    insertion:
+      zh: "桡骨粗隆、前臂筋膜"
+      en: "Radial tuberosity and bicipital aponeurosis"
+    origin_bones: [scapula]
+    insertion_bones: [forearm_hand]
+    tendinous: true
+    function:
+      zh: "肩前屈、内收，肘屈、前臂旋后"
+      en: "Shoulder flexion and adduction, elbow flexion, forearm supination"
+
+  - id: triceps_long
+    za: Long head of triceps brachii
+    regions: [shoulder]
+    group: arm
+    layer: superficial
+    name:
+      zh: "肱三头肌长头"
+      en: "Triceps brachii, long head"
+      la: "M. triceps brachii, caput longum"
+    origin:
+      zh: "肩胛骨盂下结节"
+      en: "Infraglenoid tubercle of scapula"
+    insertion:
+      zh: "尺骨鹰嘴"
+      en: "Olecranon of ulna"
+    origin_bones: [scapula]
+    insertion_bones: [forearm_hand]
+    tendinous: true
+    function:
+      zh: "肩后伸、内收，肘伸"
+      en: "Shoulder extension and adduction, elbow extension"
+
+  - id: triceps_lateral
+    za: Lateral head of triceps brachii
+    regions: [shoulder]
+    group: arm
+    layer: superficial
+    name:
+      zh: "肱三头肌外侧头"
+      en: "Triceps brachii, lateral head"
+      la: "M. triceps brachii, caput laterale"
+    origin:
+      zh: "肱骨后面桡神经沟上外侧"
+      en: "Posterior humerus, superolateral to radial groove"
+    insertion:
+      zh: "尺骨鹰嘴"
+      en: "Olecranon of ulna"
+    origin_bones: [humerus]
+    insertion_bones: [forearm_hand]
+    tendinous: true
+    function:
+      zh: "肘伸"
+      en: "Elbow extension"
+
+  - id: triceps_medial
+    za: Medial head of triceps brachii
+    regions: [shoulder]
+    group: arm
+    layer: intermediate
+    name:
+      zh: "肱三头肌内侧头"
+      en: "Triceps brachii, medial head"
+      la: "M. triceps brachii, caput mediale"
+    origin:
+      zh: "肱骨后面桡神经沟下内侧"
+      en: "Posterior humerus, inferomedial to radial groove"
+    insertion:
+      zh: "尺骨鹰嘴"
+      en: "Olecranon of ulna"
+    origin_bones: [humerus]
+    insertion_bones: [forearm_hand]
+    tendinous: true
+    function:
+      zh: "肘伸"
+      en: "Elbow extension"
+
+  # ======================= 髋 =======================
+  - id: gluteus_maximus
+    za: Gluteus maximus muscle
+    regions: [hip]
+    group: gluteal
+    layer: superficial
+    name:
+      zh: "臀大肌"
+      en: "Gluteus maximus"
+      la: "M. gluteus maximus"
+    origin:
+      zh: "髂骨臀后线后方、骶骨与尾骨背面、骶结节韧带"
+      en: "Ilium posterior to posterior gluteal line, dorsal sacrum and coccyx, sacrotuberous ligament"
+    insertion:
+      zh: "髂胫束、股骨臀肌粗隆"
+      en: "Iliotibial tract and gluteal tuberosity of femur"
+    origin_bones: [hip_bone, sacrum, coccyx]
+    insertion_bones: [femur]
+    via: {bone: femur, dir: {posterior: 1, lateral: 0.5}, within: {axis: superior, frac: [0.8, 1.0]}}
+    function:
+      zh: "髋后伸、外旋；上部纤维外展"
+      en: "Hip extension, external rotation; upper fibres abduct"
+
+  - id: gluteus_medius
+    za: Gluteus medius muscle
+    regions: [hip]
+    group: gluteal
+    layer: intermediate
+    name:
+      zh: "臀中肌"
+      en: "Gluteus medius"
+      la: "M. gluteus medius"
+    origin:
+      zh: "髂骨外面（髂嵴与臀前、后线之间）"
+      en: "Outer ilium between iliac crest and anterior/posterior gluteal lines"
+    insertion:
+      zh: "股骨大转子外侧面"
+      en: "Lateral surface of greater trochanter"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外展；前部纤维内旋，后部纤维外旋；单腿站立稳定骨盆"
+      en: "Hip abduction; anterior fibres internally rotate, posterior fibres externally rotate; stabilises pelvis in single-leg stance"
+
+  - id: gluteus_minimus
+    za: Gluteus minimus muscle
+    regions: [hip]
+    group: gluteal
+    layer: deep
+    name:
+      zh: "臀小肌"
+      en: "Gluteus minimus"
+      la: "M. gluteus minimus"
+    origin:
+      zh: "髂骨外面（臀前线与臀下线之间）"
+      en: "Outer ilium between anterior and inferior gluteal lines"
+    insertion:
+      zh: "股骨大转子前面"
+      en: "Anterior surface of greater trochanter"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外展、内旋；稳定股骨头"
+      en: "Hip abduction, internal rotation; stabilises femoral head"
+
+  - id: tensor_fasciae_latae
+    za: Tensor fasciae latae
+    regions: [hip, knee]
+    group: tfl_itb
+    layer: superficial
+    name:
+      zh: "阔筋膜张肌"
+      en: "Tensor fasciae latae"
+      la: "M. tensor fasciae latae"
+    origin:
+      zh: "髂前上棘及髂嵴外唇前部"
+      en: "Anterior superior iliac spine and anterior outer lip of iliac crest"
+    insertion:
+      zh: "经髂胫束止于胫骨外侧髁（Gerdy 结节）"
+      en: "Via iliotibial tract to lateral tibial condyle (Gerdy's tubercle)"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur, tibia]
+    tendinous: true
+    function:
+      zh: "髋屈、外展、内旋；紧张髂胫束"
+      en: "Hip flexion, abduction, internal rotation; tenses iliotibial tract"
+
+  - id: iliotibial_tract
+    za: Iliotibial tract
+    kind: fascia
+    regions: [hip, knee]
+    group: tfl_itb
+    layer: superficial
+    name:
+      zh: "髂胫束"
+      en: "Iliotibial tract"
+      la: "Tractus iliotibialis"
+    origin:
+      zh: "髂嵴外唇（接受阔筋膜张肌与臀大肌）"
+      en: "Outer lip of iliac crest (receives tensor fasciae latae and gluteus maximus)"
+    insertion:
+      zh: "胫骨外侧髁 Gerdy 结节"
+      en: "Gerdy's tubercle of lateral tibial condyle"
+    origin_bones: [hip_bone]
+    insertion_bones: [tibia]
+    tendinous: true
+    function:
+      zh: "大腿外侧张力带，稳定髋与膝外侧"
+      en: "Lateral tension band stabilising hip and knee"
+
+  - id: piriformis
+    za: Piriformis muscle
+    regions: [hip]
+    group: deep_hip_rotators
+    layer: deep
+    name:
+      zh: "梨状肌"
+      en: "Piriformis"
+      la: "M. piriformis"
+    origin:
+      zh: "骶骨前面（骶前孔之间）"
+      en: "Anterior sacrum between anterior sacral foramina"
+    insertion:
+      zh: "股骨大转子上缘"
+      en: "Superior border of greater trochanter"
+    origin_bones: [sacrum]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外旋（髋屈曲位时外展）"
+      en: "Hip external rotation (abduction when hip flexed)"
+
+  - id: gemellus_superior
+    za: Superior gemellus muscle
+    regions: [hip]
+    group: deep_hip_rotators
+    layer: deep
+    name:
+      zh: "上孖肌"
+      en: "Superior gemellus"
+      la: "M. gemellus superior"
+    origin:
+      zh: "坐骨棘"
+      en: "Ischial spine"
+    insertion:
+      zh: "股骨大转子内侧面（随闭孔内肌腱）"
+      en: "Medial surface of greater trochanter (with obturator internus tendon)"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外旋"
+      en: "Hip external rotation"
+
+  - id: gemellus_inferior
+    za: Inferior gemellus muscle
+    regions: [hip]
+    group: deep_hip_rotators
+    layer: deep
+    name:
+      zh: "下孖肌"
+      en: "Inferior gemellus"
+      la: "M. gemellus inferior"
+    origin:
+      zh: "坐骨结节上部"
+      en: "Upper part of ischial tuberosity"
+    insertion:
+      zh: "股骨大转子内侧面（随闭孔内肌腱）"
+      en: "Medial surface of greater trochanter (with obturator internus tendon)"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外旋"
+      en: "Hip external rotation"
+
+  - id: obturator_internus
+    za: Obturator internus
+    regions: [hip]
+    group: deep_hip_rotators
+    layer: deep
+    name:
+      zh: "闭孔内肌"
+      en: "Obturator internus"
+      la: "M. obturatorius internus"
+    origin:
+      zh: "闭孔膜内面及其周围骨面"
+      en: "Inner surface of obturator membrane and surrounding bone"
+    insertion:
+      zh: "股骨大转子内侧面"
+      en: "Medial surface of greater trochanter"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外旋（屈曲位时外展）"
+      en: "Hip external rotation (abduction when flexed)"
+
+  - id: obturator_externus
+    za: Obturator externus
+    regions: [hip]
+    group: deep_hip_rotators
+    layer: deep
+    name:
+      zh: "闭孔外肌"
+      en: "Obturator externus"
+      la: "M. obturatorius externus"
+    origin:
+      zh: "闭孔膜外面及耻骨、坐骨支"
+      en: "Outer surface of obturator membrane and pubic/ischial rami"
+    insertion:
+      zh: "股骨转子窝"
+      en: "Trochanteric fossa of femur"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外旋、内收"
+      en: "Hip external rotation and adduction"
+
+  - id: quadratus_femoris
+    za: Quadratus femoris muscle
+    regions: [hip]
+    group: deep_hip_rotators
+    layer: deep
+    name:
+      zh: "股方肌"
+      en: "Quadratus femoris"
+      la: "M. quadratus femoris"
+    origin:
+      zh: "坐骨结节外侧缘"
+      en: "Lateral border of ischial tuberosity"
+    insertion:
+      zh: "转子间嵴"
+      en: "Intertrochanteric crest of femur"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋外旋、内收"
+      en: "Hip external rotation and adduction"
+
+  - id: iliacus
+    za: Iliacus muscle
+    regions: [hip]
+    group: iliopsoas
+    layer: intermediate
+    name:
+      zh: "髂肌"
+      en: "Iliacus"
+      la: "M. iliacus"
+    origin:
+      zh: "髂窝"
+      en: "Iliac fossa"
+    insertion:
+      zh: "股骨小转子（随腰大肌腱）"
+      en: "Lesser trochanter of femur (with psoas major tendon)"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    via: {bone: femur, dir: {anterior: 1, superior: 0.5}, within: {axis: superior, frac: [0.8, 1.0]}}
+    function:
+      zh: "髋屈"
+      en: "Hip flexion"
+
+  - id: psoas_major
+    za: Psoas major
+    regions: [hip, lumbar]
+    group: iliopsoas
+    layer: deep
+    name:
+      zh: "腰大肌"
+      en: "Psoas major"
+      la: "M. psoas major"
+    origin:
+      zh: "T12–L5 椎体侧面、椎间盘及 L1–L5 横突"
+      en: "Sides of T12–L5 vertebral bodies and discs, and transverse processes L1–L5"
+    insertion:
+      zh: "股骨小转子"
+      en: "Lesser trochanter of femur"
+    origin_bones: [vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4, vertebra_l5, thoracic_spine]
+    insertion_bones: [femur]
+    via: {bone: femur, dir: {anterior: 1, superior: 0.5}, within: {axis: superior, frac: [0.8, 1.0]}}
+    function:
+      zh: "髋屈；固定股骨时使腰椎前屈、侧屈"
+      en: "Hip flexion; with femur fixed, lumbar flexion and lateral flexion"
+
+  - id: adductor_longus
+    za: Adductor longus
+    regions: [hip]
+    group: adductors
+    layer: superficial
+    name:
+      zh: "长收肌"
+      en: "Adductor longus"
+      la: "M. adductor longus"
+    origin:
+      zh: "耻骨上支（耻骨嵴下方）前面"
+      en: "Anterior surface of superior pubic ramus below pubic crest"
+    insertion:
+      zh: "股骨粗线中 1/3"
+      en: "Middle third of linea aspera"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋内收、屈"
+      en: "Hip adduction and flexion"
+
+  - id: adductor_brevis
+    za: Adductor brevis
+    regions: [hip]
+    group: adductors
+    layer: deep
+    name:
+      zh: "短收肌"
+      en: "Adductor brevis"
+      la: "M. adductor brevis"
+    origin:
+      zh: "耻骨体与耻骨下支"
+      en: "Body and inferior ramus of pubis"
+    insertion:
+      zh: "股骨耻骨肌线与粗线上部"
+      en: "Pectineal line and upper linea aspera"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋内收、屈"
+      en: "Hip adduction and flexion"
+
+  - id: adductor_magnus
+    za: Adductor magnus
+    regions: [hip]
+    group: adductors
+    layer: intermediate
+    name:
+      zh: "大收肌"
+      en: "Adductor magnus"
+      la: "M. adductor magnus"
+    origin:
+      zh: "耻骨下支、坐骨支、坐骨结节"
+      en: "Inferior pubic ramus, ischial ramus, ischial tuberosity"
+    insertion:
+      zh: "股骨粗线、内收肌结节"
+      en: "Linea aspera and adductor tubercle of femur"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋内收；后部纤维参与髋后伸"
+      en: "Hip adduction; posterior fibres assist hip extension"
+
+  - id: pectineus
+    za: Pectineus muscle
+    regions: [hip]
+    group: adductors
+    layer: intermediate
+    name:
+      zh: "耻骨肌"
+      en: "Pectineus"
+      la: "M. pectineus"
+    origin:
+      zh: "耻骨梳及耻骨上支"
+      en: "Pecten pubis and superior pubic ramus"
+    insertion:
+      zh: "股骨耻骨肌线"
+      en: "Pectineal line of femur"
+    origin_bones: [hip_bone]
+    insertion_bones: [femur]
+    function:
+      zh: "髋屈、内收"
+      en: "Hip flexion and adduction"
+
+  - id: gracilis
+    za: Gracilis muscle
+    regions: [hip, knee]
+    group: adductors
+    layer: superficial
+    name:
+      zh: "股薄肌"
+      en: "Gracilis"
+      la: "M. gracilis"
+    origin:
+      zh: "耻骨体与耻骨下支"
+      en: "Body and inferior ramus of pubis"
+    insertion:
+      zh: "胫骨上端内侧面（鹅足）"
+      en: "Medial surface of upper tibia (pes anserinus)"
+    origin_bones: [hip_bone]
+    insertion_bones: [tibia]
+    function:
+      zh: "髋内收；膝屈并使小腿内旋"
+      en: "Hip adduction; knee flexion and tibial internal rotation"
+
+  - id: sartorius
+    za: Sartorius muscle
+    regions: [hip, knee]
+    group: anterior_thigh
+    layer: superficial
+    name:
+      zh: "缝匠肌"
+      en: "Sartorius"
+      la: "M. sartorius"
+    origin:
+      zh: "髂前上棘"
+      en: "Anterior superior iliac spine"
+    insertion:
+      zh: "胫骨上端内侧面（鹅足）"
+      en: "Medial surface of upper tibia (pes anserinus)"
+    origin_bones: [hip_bone]
+    insertion_bones: [tibia]
+    function:
+      zh: "髋屈、外展、外旋；膝屈并使小腿内旋"
+      en: "Hip flexion, abduction, external rotation; knee flexion and tibial internal rotation"
+
+  # ======================= 膝（含跨髋的大腿肌） =======================
+  - id: rectus_femoris
+    za: Rectus femoris muscle
+    regions: [hip, knee]
+    group: anterior_thigh
+    layer: superficial
+    name:
+      zh: "股直肌"
+      en: "Rectus femoris"
+      la: "M. rectus femoris"
+    origin:
+      zh: "髂前下棘及髋臼上缘"
+      en: "Anterior inferior iliac spine and superior rim of acetabulum"
+    insertion:
+      zh: "经股四头肌腱止于髌骨，再经髌韧带止于胫骨粗隆"
+      en: "Via quadriceps tendon to patella, then patellar ligament to tibial tuberosity"
+    origin_bones: [hip_bone]
+    insertion_bones: [patella, tibia]
+    via: {bone: patella, dir: {anterior: 1}}
+    tendinous: true
+    function:
+      zh: "膝伸；髋屈"
+      en: "Knee extension; hip flexion"
+
+  - id: vastus_lateralis
+    za: Vastus lateralis muscle
+    regions: [knee]
+    group: anterior_thigh
+    layer: superficial
+    name:
+      zh: "股外侧肌"
+      en: "Vastus lateralis"
+      la: "M. vastus lateralis"
+    origin:
+      zh: "股骨大转子前下缘、粗线外侧唇"
+      en: "Greater trochanter and lateral lip of linea aspera"
+    insertion:
+      zh: "经股四头肌腱止于髌骨与胫骨粗隆"
+      en: "Via quadriceps tendon to patella and tibial tuberosity"
+    origin_bones: [femur]
+    insertion_bones: [patella, tibia]
+    via: {bone: patella, dir: {anterior: 1}}
+    tendinous: true
+    function:
+      zh: "膝伸"
+      en: "Knee extension"
+
+  - id: vastus_medialis
+    za: Vastus medialis muscle
+    regions: [knee]
+    group: anterior_thigh
+    layer: superficial
+    name:
+      zh: "股内侧肌"
+      en: "Vastus medialis"
+      la: "M. vastus medialis"
+    origin:
+      zh: "转子间线、粗线内侧唇"
+      en: "Intertrochanteric line and medial lip of linea aspera"
+    insertion:
+      zh: "经股四头肌腱止于髌骨内缘与胫骨粗隆"
+      en: "Via quadriceps tendon to medial patella and tibial tuberosity"
+    origin_bones: [femur]
+    insertion_bones: [patella, tibia]
+    via: {bone: patella, dir: {anterior: 1}}
+    tendinous: true
+    function:
+      zh: "膝伸（末 15° 伸膝与髌骨内侧稳定）"
+      en: "Knee extension (terminal 15°; medial patellar stabiliser)"
+
+  - id: vastus_intermedius
+    za: Vastus intermedius muscle
+    regions: [knee]
+    group: anterior_thigh
+    layer: intermediate
+    name:
+      zh: "股中间肌"
+      en: "Vastus intermedius"
+      la: "M. vastus intermedius"
+    origin:
+      zh: "股骨体前面及外侧面"
+      en: "Anterior and lateral surfaces of femoral shaft"
+    insertion:
+      zh: "经股四头肌腱止于髌骨与胫骨粗隆"
+      en: "Via quadriceps tendon to patella and tibial tuberosity"
+    origin_bones: [femur]
+    insertion_bones: [patella, tibia]
+    via: {bone: patella, dir: {anterior: 1}}
+    tendinous: true
+    function:
+      zh: "膝伸"
+      en: "Knee extension"
+
+  - id: biceps_femoris_long
+    za: Long head of biceps femoris
+    regions: [hip, knee]
+    group: posterior_thigh
+    layer: superficial
+    name:
+      zh: "股二头肌长头"
+      en: "Biceps femoris, long head"
+      la: "M. biceps femoris, caput longum"
+    origin:
+      zh: "坐骨结节"
+      en: "Ischial tuberosity"
+    insertion:
+      zh: "腓骨头"
+      en: "Head of fibula"
+    origin_bones: [hip_bone]
+    insertion_bones: [fibula, tibia]
+    tendinous: true
+    function:
+      zh: "髋后伸；膝屈并使小腿外旋"
+      en: "Hip extension; knee flexion and tibial external rotation"
+
+  - id: biceps_femoris_short
+    za: Short head of biceps femoris
+    regions: [knee]
+    group: posterior_thigh
+    layer: intermediate
+    name:
+      zh: "股二头肌短头"
+      en: "Biceps femoris, short head"
+      la: "M. biceps femoris, caput breve"
+    origin:
+      zh: "股骨粗线外侧唇"
+      en: "Lateral lip of linea aspera"
+    insertion:
+      zh: "腓骨头"
+      en: "Head of fibula"
+    origin_bones: [femur]
+    insertion_bones: [fibula, tibia]
+    tendinous: true
+    function:
+      zh: "膝屈并使小腿外旋"
+      en: "Knee flexion and tibial external rotation"
+
+  - id: semitendinosus
+    za: Semitendinosus muscle
+    regions: [hip, knee]
+    group: posterior_thigh
+    layer: superficial
+    name:
+      zh: "半腱肌"
+      en: "Semitendinosus"
+      la: "M. semitendinosus"
+    origin:
+      zh: "坐骨结节"
+      en: "Ischial tuberosity"
+    insertion:
+      zh: "胫骨上端内侧面（鹅足）"
+      en: "Medial surface of upper tibia (pes anserinus)"
+    origin_bones: [hip_bone]
+    insertion_bones: [tibia]
+    function:
+      zh: "髋后伸；膝屈并使小腿内旋"
+      en: "Hip extension; knee flexion and tibial internal rotation"
+
+  - id: semimembranosus
+    za: Semimembranosus muscle
+    regions: [hip, knee]
+    group: posterior_thigh
+    layer: intermediate
+    name:
+      zh: "半膜肌"
+      en: "Semimembranosus"
+      la: "M. semimembranosus"
+    origin:
+      zh: "坐骨结节"
+      en: "Ischial tuberosity"
+    insertion:
+      zh: "胫骨内侧髁后内侧面"
+      en: "Posteromedial surface of medial tibial condyle"
+    origin_bones: [hip_bone]
+    insertion_bones: [tibia]
+    function:
+      zh: "髋后伸；膝屈并使小腿内旋"
+      en: "Hip extension; knee flexion and tibial internal rotation"
+
+  - id: popliteus
+    za: Popliteus muscle
+    regions: [knee]
+    group: posterior_leg
+    layer: deep
+    name:
+      zh: "腘肌"
+      en: "Popliteus"
+      la: "M. popliteus"
+    origin:
+      zh: "股骨外上髁（腘肌沟）"
+      en: "Lateral femoral epicondyle (popliteal groove)"
+    insertion:
+      zh: "胫骨后面比目鱼肌线以上"
+      en: "Posterior tibia above soleal line"
+    origin_bones: [femur]
+    insertion_bones: [tibia]
+    function:
+      zh: "膝屈起始时\"解锁\"（使股骨外旋/小腿内旋）"
+      en: "\"Unlocks\" the knee at start of flexion (femoral external / tibial internal rotation)"
+
+  - id: gastrocnemius_medial
+    za: Medial head of gastrocnemius
+    regions: [knee]
+    group: posterior_leg
+    layer: superficial
+    name:
+      zh: "腓肠肌内侧头"
+      en: "Gastrocnemius, medial head"
+      la: "M. gastrocnemius, caput mediale"
+    origin:
+      zh: "股骨内侧髁后面"
+      en: "Posterior surface of medial femoral condyle"
+    insertion:
+      zh: "经跟腱止于跟骨结节"
+      en: "Calcaneal tuberosity via calcaneal tendon"
+    origin_bones: [femur]
+    insertion_bones: [foot]
+    tendinous: true
+    function:
+      zh: "踝跖屈；辅助膝屈"
+      en: "Ankle plantarflexion; assists knee flexion"
+
+  - id: gastrocnemius_lateral
+    za: Lateral head of gastrocnemius
+    regions: [knee]
+    group: posterior_leg
+    layer: superficial
+    name:
+      zh: "腓肠肌外侧头"
+      en: "Gastrocnemius, lateral head"
+      la: "M. gastrocnemius, caput laterale"
+    origin:
+      zh: "股骨外侧髁后面"
+      en: "Posterior surface of lateral femoral condyle"
+    insertion:
+      zh: "经跟腱止于跟骨结节"
+      en: "Calcaneal tuberosity via calcaneal tendon"
+    origin_bones: [femur]
+    insertion_bones: [foot]
+    tendinous: true
+    function:
+      zh: "踝跖屈；辅助膝屈"
+      en: "Ankle plantarflexion; assists knee flexion"
+
+  - id: plantaris
+    za: Plantaris muscle
+    regions: [knee]
+    group: posterior_leg
+    layer: intermediate
+    name:
+      zh: "跖肌"
+      en: "Plantaris"
+      la: "M. plantaris"
+    origin:
+      zh: "股骨外侧髁上线下端"
+      en: "Lower end of lateral supracondylar line of femur"
+    insertion:
+      zh: "跟骨（经跟腱内侧）"
+      en: "Calcaneus (medial to calcaneal tendon)"
+    origin_bones: [femur]
+    insertion_bones: [foot]
+    tendinous: true
+    function:
+      zh: "弱的踝跖屈与膝屈"
+      en: "Weak ankle plantarflexion and knee flexion"
+
+  # ======================= 腰 =======================
+  - id: rectus_abdominis
+    za: Rectus abdominis muscle
+    regions: [lumbar]
+    group: abdominal_wall
+    layer: superficial
+    name:
+      zh: "腹直肌"
+      en: "Rectus abdominis"
+      la: "M. rectus abdominis"
+    origin:
+      zh: "耻骨嵴与耻骨联合"
+      en: "Pubic crest and pubic symphysis"
+    insertion:
+      zh: "第 5–7 肋软骨及剑突"
+      en: "Costal cartilages 5–7 and xiphoid process"
+    origin_bones: [hip_bone]
+    insertion_bones: [costal_cartilages, xiphoid]
+    function:
+      zh: "躯干前屈（腰椎前屈）、后倾骨盆"
+      en: "Trunk flexion (lumbar flexion); posterior pelvic tilt"
+
+  - id: external_oblique
+    za: External abdominal oblique muscle
+    regions: [lumbar]
+    group: abdominal_wall
+    layer: superficial
+    name:
+      zh: "腹外斜肌"
+      en: "External oblique"
+      la: "M. obliquus externus abdominis"
+    origin:
+      zh: "第 5–12 肋外面"
+      en: "Outer surfaces of ribs 5–12"
+    insertion:
+      zh: "髂嵴前部、腹白线（经腱膜）"
+      en: "Anterior iliac crest and linea alba (via aponeurosis)"
+    origin_bones: [ribs]
+    insertion_bones: [hip_bone]
+    tendinous: true
+    function:
+      zh: "躯干前屈、同侧侧屈、对侧旋转"
+      en: "Trunk flexion, ipsilateral lateral flexion, contralateral rotation"
+
+  - id: internal_oblique
+    za: Internal abdominal oblique muscle
+    regions: [lumbar]
+    group: abdominal_wall
+    layer: intermediate
+    name:
+      zh: "腹内斜肌"
+      en: "Internal oblique"
+      la: "M. obliquus internus abdominis"
+    origin:
+      zh: "胸腰筋膜、髂嵴、腹股沟韧带外侧 1/2"
+      en: "Thoracolumbar fascia, iliac crest, lateral half of inguinal ligament"
+    insertion:
+      zh: "第 10–12 肋下缘、腹白线（经腱膜）"
+      en: "Inferior borders of ribs 10–12 and linea alba (via aponeurosis)"
+    origin_bones: [hip_bone]
+    insertion_bones: [ribs, costal_cartilages]
+    tendinous: true
+    function:
+      zh: "躯干前屈、同侧侧屈、同侧旋转"
+      en: "Trunk flexion, ipsilateral lateral flexion, ipsilateral rotation"
+
+  - id: transversus_abdominis
+    za: Transversus abdominis muscle
+    regions: [lumbar]
+    group: abdominal_wall
+    layer: deep
+    name:
+      zh: "腹横肌"
+      en: "Transversus abdominis"
+      la: "M. transversus abdominis"
+    origin:
+      zh: "髂嵴内唇、胸腰筋膜、下 6 肋软骨内面"
+      en: "Inner lip of iliac crest, thoracolumbar fascia, inner surfaces of lower six costal cartilages"
+    insertion:
+      zh: "腹白线、耻骨嵴（经腱膜）"
+      en: "Linea alba and pubic crest (via aponeurosis)"
+    origin_bones: [hip_bone, costal_cartilages]
+    insertion_bones: [hip_bone]
+    tendinous: true
+    function:
+      zh: "收紧腹壁、增加腹内压，稳定腰椎"
+      en: "Compresses abdomen and raises intra-abdominal pressure; stabilises lumbar spine"
+
+  - id: quadratus_lumborum
+    za: Quadratus lumborum muscle
+    regions: [lumbar]
+    group: lumbar_other
+    layer: deep
+    name:
+      zh: "腰方肌"
+      en: "Quadratus lumborum"
+      la: "M. quadratus lumborum"
+    origin:
+      zh: "髂嵴后部及髂腰韧带"
+      en: "Posterior iliac crest and iliolumbar ligament"
+    insertion:
+      zh: "第 12 肋下缘、L1–L4 横突"
+      en: "Inferior border of 12th rib and transverse processes L1–L4"
+    origin_bones: [hip_bone]
+    insertion_bones: [ribs, vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4]
+    function:
+      zh: "腰椎同侧侧屈、提髋；双侧收缩稳定腰椎"
+      en: "Ipsilateral lumbar lateral flexion, hip hiking; bilateral contraction stabilises lumbar spine"
+
+  - id: iliocostalis_lumborum
+    za: Iliocostalis lumborum muscle
+    regions: [lumbar]
+    group: erector_spinae
+    layer: intermediate
+    name:
+      zh: "髂肋肌（腰部）"
+      en: "Iliocostalis lumborum"
+      la: "M. iliocostalis lumborum"
+    origin:
+      zh: "骶骨背面、髂嵴、胸腰筋膜"
+      en: "Dorsal sacrum, iliac crest, thoracolumbar fascia"
+    insertion:
+      zh: "下 6–7 肋肋角"
+      en: "Angles of lower 6–7 ribs"
+    origin_bones: [sacrum, hip_bone]
+    insertion_bones: [ribs]
+    function:
+      zh: "躯干后伸、同侧侧屈"
+      en: "Trunk extension, ipsilateral lateral flexion"
+
+  - id: iliocostalis_thoracis
+    za: Iliocostalis thoracis muscle
+    regions: [lumbar]
+    group: erector_spinae
+    layer: intermediate
+    name:
+      zh: "髂肋肌（胸部）"
+      en: "Iliocostalis thoracis"
+      la: "M. iliocostalis thoracis"
+    origin:
+      zh: "下 6 肋肋角"
+      en: "Angles of lower six ribs"
+    insertion:
+      zh: "上 6 肋肋角、C7 横突"
+      en: "Angles of upper six ribs and C7 transverse process"
+    origin_bones: [ribs]
+    insertion_bones: [ribs, cervical_spine]
+    function:
+      zh: "躯干后伸、同侧侧屈"
+      en: "Trunk extension, ipsilateral lateral flexion"
+
+  - id: longissimus_thoracis
+    za: Longissimus thoracis muscle
+    regions: [lumbar]
+    group: erector_spinae
+    layer: intermediate
+    name:
+      zh: "最长肌（胸部）"
+      en: "Longissimus thoracis"
+      la: "M. longissimus thoracis"
+    origin:
+      zh: "骶骨背面、髂嵴、腰椎棘突与横突"
+      en: "Dorsal sacrum, iliac crest, lumbar spinous and transverse processes"
+    insertion:
+      zh: "胸椎横突及下 9–10 肋肋结节与肋角之间"
+      en: "Thoracic transverse processes and ribs between tubercle and angle (lower 9–10)"
+    origin_bones: [sacrum, hip_bone, vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4, vertebra_l5]
+    insertion_bones: [thoracic_spine, ribs]
+    function:
+      zh: "躯干后伸、同侧侧屈"
+      en: "Trunk extension, ipsilateral lateral flexion"
+
+  - id: spinalis_thoracis
+    za: Spinalis thoracis muscle
+    regions: [lumbar]
+    group: erector_spinae
+    layer: intermediate
+    name:
+      zh: "棘肌（胸部）"
+      en: "Spinalis thoracis"
+      la: "M. spinalis thoracis"
+    origin:
+      zh: "T10–L2 棘突"
+      en: "Spinous processes T10–L2"
+    insertion:
+      zh: "T1–T8 棘突"
+      en: "Spinous processes T1–T8"
+    origin_bones: [thoracic_spine, vertebra_l1, vertebra_l2]
+    insertion_bones: [thoracic_spine]
+    function:
+      zh: "躯干后伸"
+      en: "Trunk extension"
+
+  - id: multifidus_lumborum
+    za: Multifidus lumborum muscle
+    regions: [lumbar]
+    group: transversospinalis
+    layer: deep
+    name:
+      zh: "多裂肌（腰部）"
+      en: "Multifidus lumborum"
+      la: "M. multifidus lumborum"
+    origin:
+      zh: "骶骨背面、髂后上棘、L1–L5 乳突"
+      en: "Dorsal sacrum, posterior superior iliac spine, mammillary processes L1–L5"
+    insertion:
+      zh: "上方 2–4 个椎体的棘突"
+      en: "Spinous processes of vertebrae 2–4 levels above"
+    origin_bones: [sacrum, hip_bone, vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4, vertebra_l5]
+    insertion_bones: [vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4, vertebra_l5, thoracic_spine]
+    function:
+      zh: "腰椎节段性稳定、后伸、对侧旋转"
+      en: "Segmental lumbar stabilisation, extension, contralateral rotation"
+
+  - id: multifidus_thoracis
+    za: Multifidus thoracis muscle
+    regions: [lumbar]
+    group: transversospinalis
+    layer: deep
+    name:
+      zh: "多裂肌（胸部）"
+      en: "Multifidus thoracis"
+      la: "M. multifidus thoracis"
+    origin:
+      zh: "胸椎横突"
+      en: "Thoracic transverse processes"
+    insertion:
+      zh: "上方 2–4 个椎体的棘突"
+      en: "Spinous processes of vertebrae 2–4 levels above"
+    origin_bones: [thoracic_spine]
+    insertion_bones: [thoracic_spine]
+    function:
+      zh: "胸椎稳定、后伸、对侧旋转"
+      en: "Thoracic stabilisation, extension, contralateral rotation"
+
+  - id: semispinalis_thoracis
+    za: Semispinalis thoracis muscle
+    regions: [lumbar]
+    group: transversospinalis
+    layer: deep
+    name:
+      zh: "半棘肌（胸部）"
+      en: "Semispinalis thoracis"
+      la: "M. semispinalis thoracis"
+    origin:
+      zh: "T6–T10 横突"
+      en: "Transverse processes T6–T10"
+    insertion:
+      zh: "C6–T4 棘突"
+      en: "Spinous processes C6–T4"
+    origin_bones: [thoracic_spine]
+    insertion_bones: [thoracic_spine, cervical_spine]
+    function:
+      zh: "胸椎后伸、对侧旋转"
+      en: "Thoracic extension, contralateral rotation"
+
+  - id: rotatores
+    za: Rotatores
+    regions: [lumbar]
+    group: transversospinalis
+    layer: deep
+    name:
+      zh: "回旋肌"
+      en: "Rotatores"
+      la: "Mm. rotatores"
+    origin:
+      zh: "各椎骨横突"
+      en: "Transverse process of each vertebra"
+    insertion:
+      zh: "上一（或二）个椎骨椎板下缘与棘突根部"
+      en: "Lamina and spinous process base of the vertebra above (or two above)"
+    origin_bones: [thoracic_spine, vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4, vertebra_l5]
+    insertion_bones: [thoracic_spine, vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4, vertebra_l5]
+    function:
+      zh: "节段性本体感觉与稳定、对侧旋转"
+      en: "Segmental proprioception and stability; contralateral rotation"
+
+  - id: interspinales_lumborum
+    za: Interspinales lumborum muscles
+    regions: [lumbar]
+    group: lumbar_other
+    layer: deep
+    name:
+      zh: "腰棘间肌"
+      en: "Interspinales lumborum"
+      la: "Mm. interspinales lumborum"
+    origin:
+      zh: "腰椎棘突上缘"
+      en: "Superior surface of lumbar spinous processes"
+    insertion:
+      zh: "上一腰椎棘突下缘"
+      en: "Inferior surface of the spinous process above"
+    origin_bones: [vertebra_l2, vertebra_l3, vertebra_l4, vertebra_l5]
+    insertion_bones: [vertebra_l1, vertebra_l2, vertebra_l3, vertebra_l4]
+    function:
+      zh: "腰椎后伸、节段稳定"
+      en: "Lumbar extension and segmental stability"
+
+  - id: serratus_posterior_inferior
+    za: Serratus posterior inferior muscle
+    regions: [lumbar]
+    group: lumbar_other
+    layer: intermediate
+    name:
+      zh: "下后锯肌"
+      en: "Serratus posterior inferior"
+      la: "M. serratus posterior inferior"
+    origin:
+      zh: "T11–L2 棘突（经胸腰筋膜）"
+      en: "Spinous processes T11–L2 (via thoracolumbar fascia)"
+    insertion:
+      zh: "第 9–12 肋下缘"
+      en: "Inferior borders of ribs 9–12"
+    origin_bones: [thoracic_spine, vertebra_l1, vertebra_l2]
+    insertion_bones: [ribs]
+    function:
+      zh: "下拉下位肋骨，辅助呼气与胸腰段稳定"
+      en: "Draws lower ribs down; assists expiration and thoracolumbar stability"
+
+groups:
+  deltoid:              {zh: 三角肌, en: Deltoid}
+  rotator_cuff:         {zh: 肩袖, en: Rotator cuff}
+  pectoral:             {zh: 胸大肌, en: Pectoralis major}
+  scapular_stabilizers:
+    zh: "肩胛稳定肌"
+    en: "Scapular stabilisers"
+  back_arm:             {zh: 背阔肌与大圆肌, en: Latissimus dorsi and teres major}
+  arm:                  {zh: 上臂肌, en: Arm muscles}
+  gluteal:              {zh: 臀肌群, en: Gluteal muscles}
+  tfl_itb:              {zh: 阔筋膜张肌与髂胫束, en: TFL and iliotibial tract}
+  deep_hip_rotators:    {zh: 髋深层外旋肌群, en: Deep hip rotators}
+  iliopsoas:            {zh: 髂腰肌, en: Iliopsoas}
+  adductors:            {zh: 内收肌群, en: Adductors}
+  anterior_thigh:       {zh: 大腿前群, en: Anterior thigh}
+  posterior_thigh:      {zh: 腘绳肌（大腿后群）, en: Hamstrings}
+  posterior_leg:        {zh: 膝后方与小腿后群, en: Posterior knee and calf}
+  abdominal_wall:       {zh: 腹壁肌, en: Abdominal wall}
+  erector_spinae:       {zh: 竖脊肌, en: Erector spinae}
+  transversospinalis:   {zh: 横突棘肌, en: Transversospinalis}
+  lumbar_other:         {zh: 腰部其他肌, en: Other lumbar muscles}

@@ -1,0 +1,18 @@
+[project]
+name = "muscle-view-pipeline"
+version = "0.1.0"
+description = "Offline data pipeline for the muscle-view rehab 3D viewer"
+requires-python = ">=3.11"
+dependencies = [
+  "trimesh>=4", "numpy", "scipy", "scikit-learn", "pyyaml", "requests",
+  "fast-simplification", "pygltflib", "rtree", "networkx",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools]
+packages = ["pipeline"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

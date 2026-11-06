@@ -1,0 +1,6 @@
+concept id	name	element file id
+FMA9629	supraspinatus	FJ1506
+FMA9629	supraspinatus	FJ1506M
+FMA32544	right supraspinatus	FJ1506
+FMA32545	left supraspinatus	FJ1506M
+FMA7163	skin	FJ2810

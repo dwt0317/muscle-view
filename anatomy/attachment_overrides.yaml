@@ -1,0 +1,56 @@
+# 起止点提取的人工修正。字段：
+#   muscle            肌肉 id
+#   side              both（默认）| r | l
+#   source: za        采用 Z-Anatomy 手工绘制的附着区（角色=起点/止点由本项目 muscles.yaml 的骨列表决定，
+#                     而非 Z-Anatomy 的 .o/.e 前缀）；某一角色没有手工贴片时用算法结果补全
+#   tau_mm            覆盖接触距离阈值
+#   min_cluster_cm2   覆盖最小贴片面积
+#   drop              删除某些簇：[{role, bone, near: [x,y,z](glTF 坐标), radius_mm}]
+#   add_point_patch   肌腱在网格中缺失时，在骨上指定解剖方向的极值点周围生成小贴片：
+#                     [{role, bone, mesh(可选正则), dir, within(可选), radius_mm, replace(可选)}]
+#   copy_from         {muscle, role}：复制另一块肌肉的某一角色贴片
+#
+# 选择依据：python -m pipeline.attachments 对比 Z-Anatomy 手绘贴片，算法 F1 < 0.5 的肌肉（肌腹长段贴骨、
+# 经腱膜附着等算法难以区分的情形）采用手绘贴片。网页"校对模式"中发现的问题也回填到这里。
+
+overrides:
+  # ---- 算法 F1 < 0.5：采用手工贴片 ----
+  - {muscle: deltoid_acromial, source: za}
+  - {muscle: latissimus_dorsi, source: za}
+  - {muscle: serratus_anterior, source: za}
+  - {muscle: coracobrachialis, source: za}
+  - {muscle: biceps_long, source: za}
+  - {muscle: triceps_long, source: za}
+  - {muscle: triceps_lateral, source: za}
+  - {muscle: triceps_medial, source: za}
+  - {muscle: gluteus_medius, source: za}
+  - {muscle: gluteus_minimus, source: za}
+  - {muscle: piriformis, source: za}
+  - {muscle: gemellus_superior, source: za}
+  - {muscle: obturator_externus, source: za}
+  - {muscle: iliacus, source: za}
+  - {muscle: adductor_longus, source: za}
+  - {muscle: sartorius, source: za}
+  - {muscle: rectus_femoris, source: za}
+  - {muscle: vastus_lateralis, source: za}
+  - {muscle: vastus_medialis, source: za}
+  - {muscle: vastus_intermedius, source: za}
+  - {muscle: biceps_femoris_long, source: za}
+  - {muscle: semimembranosus, source: za}
+  - {muscle: gastrocnemius_medial, source: za}
+  - {muscle: gastrocnemius_lateral, source: za}
+  - {muscle: plantaris, source: za}
+  - {muscle: rectus_abdominis, source: za}
+  - {muscle: external_oblique, source: za}
+  - {muscle: transversus_abdominis, source: za}
+
+  # ---- 肌腱在网格中缺失：在止点骨上补点状贴片 ----
+  - muscle: biceps_short
+    add_point_patch:
+      - {role: insertion, bone: forearm_hand, mesh: '^Radius$', dir: {medial: 1, anterior: 0.3}, within: {axis: superior, frac: [0.78, 1.0]}, radius_mm: 7}
+  - muscle: gastrocnemius_medial
+    add_point_patch:
+      - {role: insertion, bone: foot, mesh: '^Calcaneus$', dir: {posterior: 1, inferior: 0.3}, radius_mm: 9}
+  - muscle: gastrocnemius_lateral
+    add_point_patch:
+      - {role: insertion, bone: foot, mesh: '^Calcaneus$', dir: {posterior: 1, inferior: 0.3}, radius_mm: 9}

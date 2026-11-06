@@ -1,0 +1,1489 @@
+{
+ "poses": {
+  "rest": {
+   "pose": {},
+   "quaternions": {
+    "pelvis": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l5": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l4": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l3": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l2": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l1": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "thorax": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "centroids": {
+    "b_tibia_r": [
+     -0.07782,
+     0.29693,
+     -0.03348
+    ],
+    "b_femur_l": [
+     0.08955,
+     0.66433,
+     -0.01829
+    ],
+    "m_rectus_femoris_r": [
+     -0.10178,
+     0.6516,
+     0.02354
+    ],
+    "m_deltoid_acromial_r": [
+     -0.20271,
+     1.3679,
+     -0.03081
+    ]
+   }
+  },
+  "knee90": {
+   "pose": {
+    "r_knee_flexion": 90
+   },
+   "quaternions": {
+    "pelvis": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l5": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l4": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l3": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l2": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l1": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "thorax": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.r": [
+     0.7071068,
+     0.0,
+     0.0,
+     0.7071068
+    ],
+    "tibia.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.r": [
+     0.3461171,
+     0.0,
+     0.0,
+     0.9381913
+    ],
+    "patella.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "centroids": {
+    "b_tibia_r": [
+     -0.07782,
+     0.46148,
+     -0.19813
+    ],
+    "b_femur_l": [
+     0.08955,
+     0.66433,
+     -0.01829
+    ],
+    "m_rectus_femoris_r": [
+     -0.10178,
+     0.64267,
+     0.01805
+    ],
+    "m_deltoid_acromial_r": [
+     -0.20271,
+     1.3679,
+     -0.03081
+    ]
+   }
+  },
+  "hip_abd30_flex40": {
+   "pose": {
+    "r_hip_abduction": 30,
+    "r_hip_flexion": 40,
+    "r_hip_rotation_int": 15
+   },
+   "quaternions": {
+    "pelvis": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l5": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l4": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l3": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l2": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l1": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "thorax": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.r": [
+     -0.2957944,
+     0.2062392,
+     -0.2842511,
+     0.8883537
+    ],
+    "femur.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "centroids": {
+    "b_tibia_r": [
+     -0.31035,
+     0.4711,
+     0.33485
+    ],
+    "b_femur_l": [
+     0.08955,
+     0.66433,
+     -0.01829
+    ],
+    "m_rectus_femoris_r": [
+     -0.16534,
+     0.73604,
+     0.15094
+    ],
+    "m_deltoid_acromial_r": [
+     -0.20271,
+     1.3679,
+     -0.03081
+    ]
+   }
+  },
+  "shoulder": {
+   "pose": {
+    "r_shoulder_abduction": 80,
+    "r_shoulder_flexion": 30,
+    "r_shoulder_rotation_int": -40,
+    "r_scapula_upward": 25,
+    "r_clavicle_elevation": 8
+   },
+   "quaternions": {
+    "pelvis": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l5": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l4": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l3": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l2": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l1": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "thorax": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.r": [
+     0.0,
+     0.0,
+     -0.0697565,
+     0.9975641
+    ],
+    "clavicle.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.r": [
+     0.0,
+     0.0,
+     -0.2164396,
+     0.976296
+    ],
+    "scapula.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.r": [
+     -0.3547717,
+     -0.2059857,
+     -0.2807545,
+     0.8676888
+    ],
+    "humerus.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "centroids": {
+    "b_tibia_r": [
+     -0.07782,
+     0.29693,
+     -0.03348
+    ],
+    "b_femur_l": [
+     0.08955,
+     0.66433,
+     -0.01829
+    ],
+    "m_rectus_femoris_r": [
+     -0.10178,
+     0.6516,
+     0.02354
+    ],
+    "m_deltoid_acromial_r": [
+     -0.21629,
+     1.44242,
+     -0.03282
+    ]
+   }
+  },
+  "trunk": {
+   "pose": {
+    "trunk_flexion": 35,
+    "trunk_lateral": -20,
+    "trunk_rotation": 25
+   },
+   "quaternions": {
+    "pelvis": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l5": [
+     0.0764576,
+     -0.0122059,
+     -0.0165685,
+     0.9968604
+    ],
+    "l4": [
+     0.061309,
+     -0.012482,
+     -0.0254609,
+     0.997716
+    ],
+    "l3": [
+     0.0617567,
+     -0.023891,
+     -0.0334952,
+     0.9972429
+    ],
+    "l2": [
+     0.0526166,
+     -0.0235831,
+     -0.0337127,
+     0.9977669
+    ],
+    "l1": [
+     0.0312736,
+     -0.022857,
+     -0.0342091,
+     0.9986637
+    ],
+    "thorax": [
+     0.0276306,
+     -0.1310766,
+     -0.0227573,
+     0.9907258
+    ],
+    "clavicle.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "centroids": {
+    "b_tibia_r": [
+     -0.07782,
+     0.29693,
+     -0.03348
+    ],
+    "b_femur_l": [
+     0.08955,
+     0.66433,
+     -0.01829
+    ],
+    "m_rectus_femoris_r": [
+     -0.10178,
+     0.6516,
+     0.02354
+    ],
+    "m_deltoid_acromial_r": [
+     -0.07725,
+     1.40302,
+     0.12726
+    ]
+   }
+  },
+  "left_mirror": {
+   "pose": {
+    "l_hip_abduction": 30,
+    "l_shoulder_abduction": 80,
+    "l_knee_flexion": 60,
+    "l_shoulder_rotation_int": 20
+   },
+   "quaternions": {
+    "pelvis": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l5": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l4": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l3": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l2": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "l1": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "thorax": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "clavicle.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scapula.l": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "humerus.l": [
+     0.1116189,
+     -0.1330222,
+     0.6330222,
+     0.7544065
+    ],
+    "femur.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "femur.l": [
+     0.0,
+     0.0,
+     0.258819,
+     0.9659258
+    ],
+    "tibia.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "tibia.l": [
+     0.5,
+     0.0,
+     0.0,
+     0.8660254
+    ],
+    "patella.r": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "patella.l": [
+     0.2334454,
+     0.0,
+     0.0,
+     0.9723699
+    ]
+   },
+   "centroids": {
+    "b_tibia_r": [
+     -0.07782,
+     0.29693,
+     -0.03348
+    ],
+    "b_femur_l": [
+     0.18672,
+     0.69346,
+     -0.01829
+    ],
+    "m_rectus_femoris_r": [
+     -0.10178,
+     0.6516,
+     0.02354
+    ],
+    "m_deltoid_acromial_r": [
+     -0.20271,
+     1.3679,
+     -0.03081
+    ]
+   }
+  }
+ },
+ "ratios": {
+  "knee140": {
+   "pose": {
+    "r_knee_flexion": 140
+   },
+   "values": {
+    "deltoid_clavicular:r": 1.0,
+    "deltoid_clavicular:l": 1.0,
+    "deltoid_acromial:r": 1.0,
+    "deltoid_acromial:l": 1.0,
+    "deltoid_spinal:r": 1.0,
+    "deltoid_spinal:l": 1.0,
+    "supraspinatus:r": 1.0,
+    "supraspinatus:l": 1.0,
+    "infraspinatus:r": 1.0,
+    "infraspinatus:l": 1.0,
+    "teres_minor:r": 1.0,
+    "teres_minor:l": 1.0,
+    "subscapularis:r": 1.0,
+    "subscapularis:l": 1.0,
+    "teres_major:r": 1.0,
+    "teres_major:l": 1.0,
+    "pectoralis_major_clavicular:r": 1.0,
+    "pectoralis_major_clavicular:l": 1.0,
+    "pectoralis_major_sternocostal:r": 1.0,
+    "pectoralis_major_sternocostal:l": 1.0,
+    "pectoralis_major_abdominal:r": 1.0,
+    "pectoralis_major_abdominal:l": 1.0,
+    "pectoralis_minor:r": 1.0,
+    "pectoralis_minor:l": 1.0,
+    "latissimus_dorsi:r": 1.0,
+    "latissimus_dorsi:l": 1.0,
+    "trapezius_descending:r": 1.0,
+    "trapezius_descending:l": 1.0,
+    "trapezius_transverse:r": 1.0,
+    "trapezius_transverse:l": 1.0,
+    "trapezius_ascending:r": 1.0,
+    "trapezius_ascending:l": 1.0,
+    "rhomboid_major:r": 1.0,
+    "rhomboid_major:l": 1.0,
+    "rhomboid_minor:r": 1.0,
+    "rhomboid_minor:l": 1.0,
+    "levator_scapulae:r": 1.0,
+    "levator_scapulae:l": 1.0,
+    "serratus_anterior:r": 1.0,
+    "serratus_anterior:l": 1.0,
+    "subclavius:r": 1.0,
+    "subclavius:l": 1.0,
+    "coracobrachialis:r": 1.0,
+    "coracobrachialis:l": 1.0,
+    "biceps_long:r": 1.0,
+    "biceps_long:l": 1.0,
+    "biceps_short:r": 1.0,
+    "biceps_short:l": 1.0,
+    "triceps_long:r": 1.0,
+    "triceps_long:l": 1.0,
+    "triceps_lateral:r": 1.0,
+    "triceps_lateral:l": 1.0,
+    "triceps_medial:r": 1.0,
+    "triceps_medial:l": 1.0,
+    "gluteus_maximus:r": 1.0,
+    "gluteus_maximus:l": 1.0,
+    "gluteus_medius:r": 1.0,
+    "gluteus_medius:l": 1.0,
+    "gluteus_minimus:r": 1.0,
+    "gluteus_minimus:l": 1.0,
+    "tensor_fasciae_latae:r": 1.0,
+    "tensor_fasciae_latae:l": 1.0,
+    "iliotibial_tract:r": 0.867104,
+    "iliotibial_tract:l": 1.0,
+    "piriformis:r": 1.0,
+    "piriformis:l": 1.0,
+    "gemellus_superior:r": 1.0,
+    "gemellus_superior:l": 1.0,
+    "gemellus_inferior:r": 1.0,
+    "gemellus_inferior:l": 1.0,
+    "obturator_internus:r": 1.0,
+    "obturator_internus:l": 1.0,
+    "obturator_externus:r": 1.0,
+    "obturator_externus:l": 1.0,
+    "quadratus_femoris:r": 1.0,
+    "quadratus_femoris:l": 1.0,
+    "iliacus:r": 1.0,
+    "iliacus:l": 1.0,
+    "psoas_major:r": 1.0,
+    "psoas_major:l": 1.0,
+    "adductor_longus:r": 1.0,
+    "adductor_longus:l": 1.0,
+    "adductor_brevis:r": 1.0,
+    "adductor_brevis:l": 1.0,
+    "adductor_magnus:r": 1.0,
+    "adductor_magnus:l": 1.0,
+    "pectineus:r": 1.0,
+    "pectineus:l": 1.0,
+    "gracilis:r": 0.769594,
+    "gracilis:l": 1.0,
+    "sartorius:r": 0.796708,
+    "sartorius:l": 1.0,
+    "rectus_femoris:r": 1.128337,
+    "rectus_femoris:l": 1.0,
+    "vastus_lateralis:r": 1.30877,
+    "vastus_lateralis:l": 1.0,
+    "vastus_medialis:r": 1.380424,
+    "vastus_medialis:l": 1.0,
+    "vastus_intermedius:r": 1.251737,
+    "vastus_intermedius:l": 1.0,
+    "biceps_femoris_long:r": 0.742657,
+    "biceps_femoris_long:l": 1.0,
+    "biceps_femoris_short:r": 0.43117,
+    "biceps_femoris_short:l": 1.0,
+    "semitendinosus:r": 0.703298,
+    "semitendinosus:l": 1.0,
+    "semimembranosus:r": 0.738052,
+    "semimembranosus:l": 1.0,
+    "popliteus:r": 1.100745,
+    "popliteus:l": 1.0,
+    "gastrocnemius_medial:r": 0.943035,
+    "gastrocnemius_medial:l": 1.0,
+    "gastrocnemius_lateral:r": 0.952052,
+    "gastrocnemius_lateral:l": 1.0,
+    "plantaris:r": 0.87531,
+    "plantaris:l": 1.0,
+    "rectus_abdominis:r": 1.0,
+    "rectus_abdominis:l": 1.0,
+    "external_oblique:r": 1.0,
+    "external_oblique:l": 1.0,
+    "internal_oblique:r": 1.0,
+    "internal_oblique:l": 1.0,
+    "transversus_abdominis:r": 1.0,
+    "transversus_abdominis:l": 1.0,
+    "quadratus_lumborum:r": 1.0,
+    "quadratus_lumborum:l": 1.0,
+    "iliocostalis_lumborum:r": 1.0,
+    "iliocostalis_lumborum:l": 1.0,
+    "iliocostalis_thoracis:r": 1.0,
+    "iliocostalis_thoracis:l": 1.0,
+    "longissimus_thoracis:r": 1.0,
+    "longissimus_thoracis:l": 1.0,
+    "spinalis_thoracis:r": 1.0,
+    "spinalis_thoracis:l": 1.0,
+    "multifidus_lumborum:r": 1.0,
+    "multifidus_lumborum:l": 1.0,
+    "multifidus_thoracis:r": 1.0,
+    "multifidus_thoracis:l": 1.0,
+    "semispinalis_thoracis:r": 1.0,
+    "semispinalis_thoracis:l": 1.0,
+    "rotatores:r": 1.0,
+    "rotatores:l": 1.0,
+    "interspinales_lumborum:r": 1.0,
+    "interspinales_lumborum:l": 1.0,
+    "serratus_posterior_inferior:r": 1.0,
+    "serratus_posterior_inferior:l": 1.0
+   }
+  },
+  "hip_flex90": {
+   "pose": {
+    "r_hip_flexion": 90
+   },
+   "values": {
+    "deltoid_clavicular:r": 1.0,
+    "deltoid_clavicular:l": 1.0,
+    "deltoid_acromial:r": 1.0,
+    "deltoid_acromial:l": 1.0,
+    "deltoid_spinal:r": 1.0,
+    "deltoid_spinal:l": 1.0,
+    "supraspinatus:r": 1.0,
+    "supraspinatus:l": 1.0,
+    "infraspinatus:r": 1.0,
+    "infraspinatus:l": 1.0,
+    "teres_minor:r": 1.0,
+    "teres_minor:l": 1.0,
+    "subscapularis:r": 1.0,
+    "subscapularis:l": 1.0,
+    "teres_major:r": 1.0,
+    "teres_major:l": 1.0,
+    "pectoralis_major_clavicular:r": 1.0,
+    "pectoralis_major_clavicular:l": 1.0,
+    "pectoralis_major_sternocostal:r": 1.0,
+    "pectoralis_major_sternocostal:l": 1.0,
+    "pectoralis_major_abdominal:r": 1.0,
+    "pectoralis_major_abdominal:l": 1.0,
+    "pectoralis_minor:r": 1.0,
+    "pectoralis_minor:l": 1.0,
+    "latissimus_dorsi:r": 1.0,
+    "latissimus_dorsi:l": 1.0,
+    "trapezius_descending:r": 1.0,
+    "trapezius_descending:l": 1.0,
+    "trapezius_transverse:r": 1.0,
+    "trapezius_transverse:l": 1.0,
+    "trapezius_ascending:r": 1.0,
+    "trapezius_ascending:l": 1.0,
+    "rhomboid_major:r": 1.0,
+    "rhomboid_major:l": 1.0,
+    "rhomboid_minor:r": 1.0,
+    "rhomboid_minor:l": 1.0,
+    "levator_scapulae:r": 1.0,
+    "levator_scapulae:l": 1.0,
+    "serratus_anterior:r": 1.0,
+    "serratus_anterior:l": 1.0,
+    "subclavius:r": 1.0,
+    "subclavius:l": 1.0,
+    "coracobrachialis:r": 1.0,
+    "coracobrachialis:l": 1.0,
+    "biceps_long:r": 1.0,
+    "biceps_long:l": 1.0,
+    "biceps_short:r": 1.0,
+    "biceps_short:l": 1.0,
+    "triceps_long:r": 1.0,
+    "triceps_long:l": 1.0,
+    "triceps_lateral:r": 1.0,
+    "triceps_lateral:l": 1.0,
+    "triceps_medial:r": 1.0,
+    "triceps_medial:l": 1.0,
+    "gluteus_maximus:r": 1.142842,
+    "gluteus_maximus:l": 1.0,
+    "gluteus_medius:r": 1.095759,
+    "gluteus_medius:l": 1.0,
+    "gluteus_minimus:r": 1.029803,
+    "gluteus_minimus:l": 1.0,
+    "tensor_fasciae_latae:r": 0.723471,
+    "tensor_fasciae_latae:l": 1.0,
+    "iliotibial_tract:r": 0.805975,
+    "iliotibial_tract:l": 1.0,
+    "piriformis:r": 1.055951,
+    "piriformis:l": 1.0,
+    "gemellus_superior:r": 1.173016,
+    "gemellus_superior:l": 1.0,
+    "gemellus_inferior:r": 1.208242,
+    "gemellus_inferior:l": 1.0,
+    "obturator_internus:r": 1.091391,
+    "obturator_internus:l": 1.0,
+    "obturator_externus:r": 1.013373,
+    "obturator_externus:l": 1.0,
+    "quadratus_femoris:r": 1.936617,
+    "quadratus_femoris:l": 1.0,
+    "iliacus:r": 0.950492,
+    "iliacus:l": 1.0,
+    "psoas_major:r": 0.96988,
+    "psoas_major:l": 1.0,
+    "adductor_longus:r": 0.80607,
+    "adductor_longus:l": 1.0,
+    "adductor_brevis:r": 0.868667,
+    "adductor_brevis:l": 1.0,
+    "adductor_magnus:r": 1.291217,
+    "adductor_magnus:l": 1.0,
+    "pectineus:r": 0.712294,
+    "pectineus:l": 1.0,
+    "gracilis:r": 1.024989,
+    "gracilis:l": 1.0,
+    "sartorius:r": 0.781027,
+    "sartorius:l": 1.0,
+    "rectus_femoris:r": 0.881877,
+    "rectus_femoris:l": 1.0,
+    "vastus_lateralis:r": 1.0,
+    "vastus_lateralis:l": 1.0,
+    "vastus_medialis:r": 1.0,
+    "vastus_medialis:l": 1.0,
+    "vastus_intermedius:r": 1.0,
+    "vastus_intermedius:l": 1.0,
+    "biceps_femoris_long:r": 1.224122,
+    "biceps_femoris_long:l": 1.0,
+    "biceps_femoris_short:r": 1.0,
+    "biceps_femoris_short:l": 1.0,
+    "semitendinosus:r": 1.235247,
+    "semitendinosus:l": 1.0,
+    "semimembranosus:r": 1.233338,
+    "semimembranosus:l": 1.0,
+    "popliteus:r": 1.0,
+    "popliteus:l": 1.0,
+    "gastrocnemius_medial:r": 1.0,
+    "gastrocnemius_medial:l": 1.0,
+    "gastrocnemius_lateral:r": 1.0,
+    "gastrocnemius_lateral:l": 1.0,
+    "plantaris:r": 1.0,
+    "plantaris:l": 1.0,
+    "rectus_abdominis:r": 1.0,
+    "rectus_abdominis:l": 1.0,
+    "external_oblique:r": 1.0,
+    "external_oblique:l": 1.0,
+    "internal_oblique:r": 1.0,
+    "internal_oblique:l": 1.0,
+    "transversus_abdominis:r": 1.0,
+    "transversus_abdominis:l": 1.0,
+    "quadratus_lumborum:r": 1.0,
+    "quadratus_lumborum:l": 1.0,
+    "iliocostalis_lumborum:r": 1.0,
+    "iliocostalis_lumborum:l": 1.0,
+    "iliocostalis_thoracis:r": 1.0,
+    "iliocostalis_thoracis:l": 1.0,
+    "longissimus_thoracis:r": 1.0,
+    "longissimus_thoracis:l": 1.0,
+    "spinalis_thoracis:r": 1.0,
+    "spinalis_thoracis:l": 1.0,
+    "multifidus_lumborum:r": 1.0,
+    "multifidus_lumborum:l": 1.0,
+    "multifidus_thoracis:r": 1.0,
+    "multifidus_thoracis:l": 1.0,
+    "semispinalis_thoracis:r": 1.0,
+    "semispinalis_thoracis:l": 1.0,
+    "rotatores:r": 1.0,
+    "rotatores:l": 1.0,
+    "interspinales_lumborum:r": 1.0,
+    "interspinales_lumborum:l": 1.0,
+    "serratus_posterior_inferior:r": 1.0,
+    "serratus_posterior_inferior:l": 1.0
+   }
+  },
+  "shoulder_abd120": {
+   "pose": {
+    "r_shoulder_abduction": 120,
+    "r_scapula_upward": 30,
+    "r_clavicle_elevation": 9
+   },
+   "values": {
+    "deltoid_clavicular:r": 1.005648,
+    "deltoid_clavicular:l": 1.0,
+    "deltoid_acromial:r": 0.640557,
+    "deltoid_acromial:l": 1.0,
+    "deltoid_spinal:r": 1.095199,
+    "deltoid_spinal:l": 1.0,
+    "supraspinatus:r": 0.77791,
+    "supraspinatus:l": 1.0,
+    "infraspinatus:r": 0.915954,
+    "infraspinatus:l": 1.0,
+    "teres_minor:r": 1.146896,
+    "teres_minor:l": 1.0,
+    "subscapularis:r": 1.049507,
+    "subscapularis:l": 1.0,
+    "teres_major:r": 1.556556,
+    "teres_major:l": 1.0,
+    "pectoralis_major_clavicular:r": 1.143245,
+    "pectoralis_major_clavicular:l": 1.0,
+    "pectoralis_major_sternocostal:r": 1.461696,
+    "pectoralis_major_sternocostal:l": 1.0,
+    "pectoralis_major_abdominal:r": 1.439975,
+    "pectoralis_major_abdominal:l": 1.0,
+    "pectoralis_minor:r": 1.143486,
+    "pectoralis_minor:l": 1.0,
+    "latissimus_dorsi:r": 1.422543,
+    "latissimus_dorsi:l": 1.0,
+    "trapezius_descending:r": 0.918433,
+    "trapezius_descending:l": 1.0,
+    "trapezius_transverse:r": 1.032103,
+    "trapezius_transverse:l": 1.0,
+    "trapezius_ascending:r": 1.140983,
+    "trapezius_ascending:l": 1.0,
+    "rhomboid_major:r": 1.597664,
+    "rhomboid_major:l": 1.0,
+    "rhomboid_minor:r": 1.439106,
+    "rhomboid_minor:l": 1.0,
+    "levator_scapulae:r": 1.19729,
+    "levator_scapulae:l": 1.0,
+    "serratus_anterior:r": 0.903029,
+    "serratus_anterior:l": 1.0,
+    "subclavius:r": 1.061805,
+    "subclavius:l": 1.0,
+    "coracobrachialis:r": 1.113862,
+    "coracobrachialis:l": 1.0,
+    "biceps_long:r": 1.022806,
+    "biceps_long:l": 1.0,
+    "biceps_short:r": 1.039826,
+    "biceps_short:l": 1.0,
+    "triceps_long:r": 1.144722,
+    "triceps_long:l": 1.0,
+    "triceps_lateral:r": 1.0,
+    "triceps_lateral:l": 1.0,
+    "triceps_medial:r": 1.0,
+    "triceps_medial:l": 1.0,
+    "gluteus_maximus:r": 1.0,
+    "gluteus_maximus:l": 1.0,
+    "gluteus_medius:r": 1.0,
+    "gluteus_medius:l": 1.0,
+    "gluteus_minimus:r": 1.0,
+    "gluteus_minimus:l": 1.0,
+    "tensor_fasciae_latae:r": 1.0,
+    "tensor_fasciae_latae:l": 1.0,
+    "iliotibial_tract:r": 1.0,
+    "iliotibial_tract:l": 1.0,
+    "piriformis:r": 1.0,
+    "piriformis:l": 1.0,
+    "gemellus_superior:r": 1.0,
+    "gemellus_superior:l": 1.0,
+    "gemellus_inferior:r": 1.0,
+    "gemellus_inferior:l": 1.0,
+    "obturator_internus:r": 1.0,
+    "obturator_internus:l": 1.0,
+    "obturator_externus:r": 1.0,
+    "obturator_externus:l": 1.0,
+    "quadratus_femoris:r": 1.0,
+    "quadratus_femoris:l": 1.0,
+    "iliacus:r": 1.0,
+    "iliacus:l": 1.0,
+    "psoas_major:r": 1.0,
+    "psoas_major:l": 1.0,
+    "adductor_longus:r": 1.0,
+    "adductor_longus:l": 1.0,
+    "adductor_brevis:r": 1.0,
+    "adductor_brevis:l": 1.0,
+    "adductor_magnus:r": 1.0,
+    "adductor_magnus:l": 1.0,
+    "pectineus:r": 1.0,
+    "pectineus:l": 1.0,
+    "gracilis:r": 1.0,
+    "gracilis:l": 1.0,
+    "sartorius:r": 1.0,
+    "sartorius:l": 1.0,
+    "rectus_femoris:r": 1.0,
+    "rectus_femoris:l": 1.0,
+    "vastus_lateralis:r": 1.0,
+    "vastus_lateralis:l": 1.0,
+    "vastus_medialis:r": 1.0,
+    "vastus_medialis:l": 1.0,
+    "vastus_intermedius:r": 1.0,
+    "vastus_intermedius:l": 1.0,
+    "biceps_femoris_long:r": 1.0,
+    "biceps_femoris_long:l": 1.0,
+    "biceps_femoris_short:r": 1.0,
+    "biceps_femoris_short:l": 1.0,
+    "semitendinosus:r": 1.0,
+    "semitendinosus:l": 1.0,
+    "semimembranosus:r": 1.0,
+    "semimembranosus:l": 1.0,
+    "popliteus:r": 1.0,
+    "popliteus:l": 1.0,
+    "gastrocnemius_medial:r": 1.0,
+    "gastrocnemius_medial:l": 1.0,
+    "gastrocnemius_lateral:r": 1.0,
+    "gastrocnemius_lateral:l": 1.0,
+    "plantaris:r": 1.0,
+    "plantaris:l": 1.0,
+    "rectus_abdominis:r": 1.0,
+    "rectus_abdominis:l": 1.0,
+    "external_oblique:r": 1.0,
+    "external_oblique:l": 1.0,
+    "internal_oblique:r": 1.0,
+    "internal_oblique:l": 1.0,
+    "transversus_abdominis:r": 1.0,
+    "transversus_abdominis:l": 1.0,
+    "quadratus_lumborum:r": 1.0,
+    "quadratus_lumborum:l": 1.0,
+    "iliocostalis_lumborum:r": 1.0,
+    "iliocostalis_lumborum:l": 1.0,
+    "iliocostalis_thoracis:r": 1.0,
+    "iliocostalis_thoracis:l": 1.0,
+    "longissimus_thoracis:r": 1.0,
+    "longissimus_thoracis:l": 1.0,
+    "spinalis_thoracis:r": 1.0,
+    "spinalis_thoracis:l": 1.0,
+    "multifidus_lumborum:r": 1.0,
+    "multifidus_lumborum:l": 1.0,
+    "multifidus_thoracis:r": 1.0,
+    "multifidus_thoracis:l": 1.0,
+    "semispinalis_thoracis:r": 1.0,
+    "semispinalis_thoracis:l": 1.0,
+    "rotatores:r": 1.0,
+    "rotatores:l": 1.0,
+    "interspinales_lumborum:r": 1.0,
+    "interspinales_lumborum:l": 1.0,
+    "serratus_posterior_inferior:r": 1.0,
+    "serratus_posterior_inferior:l": 1.0
+   }
+  },
+  "trunk": {
+   "pose": {
+    "trunk_flexion": 35,
+    "trunk_lateral": -20,
+    "trunk_rotation": 25
+   },
+   "values": {
+    "deltoid_clavicular:r": 1.0,
+    "deltoid_clavicular:l": 1.0,
+    "deltoid_acromial:r": 1.0,
+    "deltoid_acromial:l": 1.0,
+    "deltoid_spinal:r": 1.0,
+    "deltoid_spinal:l": 1.0,
+    "supraspinatus:r": 1.0,
+    "supraspinatus:l": 1.0,
+    "infraspinatus:r": 1.0,
+    "infraspinatus:l": 1.0,
+    "teres_minor:r": 1.0,
+    "teres_minor:l": 1.0,
+    "subscapularis:r": 1.0,
+    "subscapularis:l": 1.0,
+    "teres_major:r": 1.0,
+    "teres_major:l": 1.0,
+    "pectoralis_major_clavicular:r": 1.0,
+    "pectoralis_major_clavicular:l": 1.0,
+    "pectoralis_major_sternocostal:r": 1.0,
+    "pectoralis_major_sternocostal:l": 1.0,
+    "pectoralis_major_abdominal:r": 1.0,
+    "pectoralis_major_abdominal:l": 1.0,
+    "pectoralis_minor:r": 1.0,
+    "pectoralis_minor:l": 1.0,
+    "latissimus_dorsi:r": 1.1116,
+    "latissimus_dorsi:l": 1.023366,
+    "trapezius_descending:r": 1.0,
+    "trapezius_descending:l": 1.0,
+    "trapezius_transverse:r": 1.0,
+    "trapezius_transverse:l": 1.0,
+    "trapezius_ascending:r": 1.0,
+    "trapezius_ascending:l": 1.0,
+    "rhomboid_major:r": 1.0,
+    "rhomboid_major:l": 1.0,
+    "rhomboid_minor:r": 1.0,
+    "rhomboid_minor:l": 1.0,
+    "levator_scapulae:r": 1.0,
+    "levator_scapulae:l": 1.0,
+    "serratus_anterior:r": 1.0,
+    "serratus_anterior:l": 1.0,
+    "subclavius:r": 1.0,
+    "subclavius:l": 1.0,
+    "coracobrachialis:r": 1.0,
+    "coracobrachialis:l": 1.0,
+    "biceps_long:r": 1.0,
+    "biceps_long:l": 1.0,
+    "biceps_short:r": 1.0,
+    "biceps_short:l": 1.0,
+    "triceps_long:r": 1.0,
+    "triceps_long:l": 1.0,
+    "triceps_lateral:r": 1.0,
+    "triceps_lateral:l": 1.0,
+    "triceps_medial:r": 1.0,
+    "triceps_medial:l": 1.0,
+    "gluteus_maximus:r": 1.0,
+    "gluteus_maximus:l": 1.0,
+    "gluteus_medius:r": 1.0,
+    "gluteus_medius:l": 1.0,
+    "gluteus_minimus:r": 1.0,
+    "gluteus_minimus:l": 1.0,
+    "tensor_fasciae_latae:r": 1.0,
+    "tensor_fasciae_latae:l": 1.0,
+    "iliotibial_tract:r": 1.0,
+    "iliotibial_tract:l": 1.0,
+    "piriformis:r": 1.0,
+    "piriformis:l": 1.0,
+    "gemellus_superior:r": 1.0,
+    "gemellus_superior:l": 1.0,
+    "gemellus_inferior:r": 1.0,
+    "gemellus_inferior:l": 1.0,
+    "obturator_internus:r": 1.0,
+    "obturator_internus:l": 1.0,
+    "obturator_externus:r": 1.0,
+    "obturator_externus:l": 1.0,
+    "quadratus_femoris:r": 1.0,
+    "quadratus_femoris:l": 1.0,
+    "iliacus:r": 1.0,
+    "iliacus:l": 1.0,
+    "psoas_major:r": 0.997491,
+    "psoas_major:l": 0.944866,
+    "adductor_longus:r": 1.0,
+    "adductor_longus:l": 1.0,
+    "adductor_brevis:r": 1.0,
+    "adductor_brevis:l": 1.0,
+    "adductor_magnus:r": 1.0,
+    "adductor_magnus:l": 1.0,
+    "pectineus:r": 1.0,
+    "pectineus:l": 1.0,
+    "gracilis:r": 1.0,
+    "gracilis:l": 1.0,
+    "sartorius:r": 1.0,
+    "sartorius:l": 1.0,
+    "rectus_femoris:r": 1.0,
+    "rectus_femoris:l": 1.0,
+    "vastus_lateralis:r": 1.0,
+    "vastus_lateralis:l": 1.0,
+    "vastus_medialis:r": 1.0,
+    "vastus_medialis:l": 1.0,
+    "vastus_intermedius:r": 1.0,
+    "vastus_intermedius:l": 1.0,
+    "biceps_femoris_long:r": 1.0,
+    "biceps_femoris_long:l": 1.0,
+    "biceps_femoris_short:r": 1.0,
+    "biceps_femoris_short:l": 1.0,
+    "semitendinosus:r": 1.0,
+    "semitendinosus:l": 1.0,
+    "semimembranosus:r": 1.0,
+    "semimembranosus:l": 1.0,
+    "popliteus:r": 1.0,
+    "popliteus:l": 1.0,
+    "gastrocnemius_medial:r": 1.0,
+    "gastrocnemius_medial:l": 1.0,
+    "gastrocnemius_lateral:r": 1.0,
+    "gastrocnemius_lateral:l": 1.0,
+    "plantaris:r": 1.0,
+    "plantaris:l": 1.0,
+    "rectus_abdominis:r": 0.887703,
+    "rectus_abdominis:l": 0.847093,
+    "external_oblique:r": 1.126702,
+    "external_oblique:l": 0.849884,
+    "internal_oblique:r": 1.04362,
+    "internal_oblique:l": 0.904029,
+    "transversus_abdominis:r": 1.0,
+    "transversus_abdominis:l": 1.0,
+    "quadratus_lumborum:r": 1.32512,
+    "quadratus_lumborum:l": 1.099697,
+    "iliocostalis_lumborum:r": 1.202782,
+    "iliocostalis_lumborum:l": 1.058257,
+    "iliocostalis_thoracis:r": 1.0,
+    "iliocostalis_thoracis:l": 1.0,
+    "longissimus_thoracis:r": 1.078795,
+    "longissimus_thoracis:l": 1.050038,
+    "spinalis_thoracis:r": 1.01059,
+    "spinalis_thoracis:l": 1.009269,
+    "multifidus_lumborum:r": 1.162394,
+    "multifidus_lumborum:l": 1.059945,
+    "multifidus_thoracis:r": 1.0,
+    "multifidus_thoracis:l": 1.0,
+    "semispinalis_thoracis:r": 1.0,
+    "semispinalis_thoracis:l": 1.0,
+    "rotatores:r": 1.041497,
+    "rotatores:l": 1.026392,
+    "interspinales_lumborum:r": 1.216418,
+    "interspinales_lumborum:l": 1.208011,
+    "serratus_posterior_inferior:r": 0.966576,
+    "serratus_posterior_inferior:l": 1.04968
+   }
+  }
+ }
+}

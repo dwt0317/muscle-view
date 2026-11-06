@@ -1,0 +1,5 @@
+concept id	representation id	en
+FMA9629	BP1	supraspinatus
+FMA32544	BP2	right supraspinatus
+FMA32545	BP3	left supraspinatus
+FMA7163	BP4	skin

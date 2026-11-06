@@ -1,0 +1,81 @@
+# 刚体骨架（示意级运动学）。
+#
+# bodies    刚体树。每个刚体 = bones.yaml 中 body 相同的骨一起运动。
+#           带 {s} 的键会展开为 .r 和 .l 两个刚体（DOF 名自动加 r_/l_ 前缀；左侧 y、z 轴的符号取反，保证 +值 = 同一解剖方向）。
+# center    该刚体与其父刚体之间的关节中心（glTF 世界坐标，静息姿势），由 pipeline/joints.py 从网格计算：
+#             centroid     {mesh}                 某块网格（如椎间盘）的重心
+#             sphere_fit   {bone, mesh?, take}    对骨的球形关节面（股骨头/肱骨头）做 RANSAC 球拟合
+#             bone_extreme {bone, mesh?, dir}     骨在某解剖方向上的端点（锁骨内/外侧端）
+#             knee_axis    {femur}                膝屈伸轴：股骨内/外上髁连线中点 + 矢状面后髁圆心
+#             same_as      {body}                 与另一个刚体同一中心
+# dofs      自由度。name 是姿势字典里的键，axis 是父刚体坐标系（静息时与世界轴对齐）里的旋转轴，
+#           sign 使"正值"对应下面写的解剖方向（右侧；左侧自动镜像），角度单位度。
+#           share 是该刚体分担该 DOF 总角度的比例（腰椎各节段分担躯干运动）。
+# span      true = 肌腹可沿该刚体全长分布（股骨、胫骨、腰椎）。蒙皮时，起止点之间若经过这样的刚体，它会成为过渡段。
+#           肩部链条（锁骨→肩胛→肱骨）不设 span：胸大肌等直接从胸廓跨到肱骨，并不贴着肩胛骨。
+# frame_from 该刚体的 DOF 在祖先刚体（如 thorax）的坐标系里定义：局部旋转 = (中间祖先旋转的乘积)⁻¹ · DOF 旋转，
+#           于是世界朝向只由 DOF 决定，不受中间刚体（锁骨/肩胛）的旋转影响，关节中心仍随它们移动。
+#           肱骨用 frame_from: thorax，使 shoulder_abduction / flexion 是临床上的"肱胸角"（手臂相对躯干的角度）。
+#           同一刚体上多个 DOF 按列表顺序复合（内旋转，先列出的先作用于父坐标系）。
+#
+# 坐标系：+Y 上，+Z 前，患者右侧为 -X。
+#   x 轴 = 额状轴（屈伸），z 轴 = 矢状轴（外展/侧屈），y 轴 = 纵轴（旋转）。
+
+# 躯干自由度：总角度按 shares 分摊给带 trunk 标记的刚体（腰椎 L5…L1 与上方胸廓）。每组 shares 之和为 1。
+# 复合顺序：旋转(y) · 侧屈(z) · 屈伸(x)。
+trunk_dofs:
+  - {name: trunk_flexion,  axis: [1, 0, 0], sign: 1,  shares: {l5: 0.25, l4: 0.20, l3: 0.20, l2: 0.17, l1: 0.10, thorax: 0.08}}  # + = 前屈，负值 = 后伸
+  - {name: trunk_lateral,  axis: [0, 0, 1], sign: 1,  shares: {l5: 0.10, l4: 0.15, l3: 0.20, l2: 0.20, l1: 0.20, thorax: 0.15}}  # + = 向右侧屈
+  - {name: trunk_rotation, axis: [0, 1, 0], sign: -1, shares: {l5: 0.05, l4: 0.05, l3: 0.10, l2: 0.10, l1: 0.10, thorax: 0.60}}  # + = 向右旋转
+
+bodies:
+  pelvis: {parent: null}   # 根刚体，不动；关节中心取世界原点以外的骨盆中心仅用于显示
+
+  l5: {span: true, parent: pelvis, trunk: true, center: {type: centroid, mesh: "Intervertebral disc L5-S1"}}
+  l4: {span: true, parent: l5, trunk: true,    center: {type: centroid, mesh: "Intervertebral disc L4-L5"}}
+  l3: {span: true, parent: l4, trunk: true,    center: {type: centroid, mesh: "Intervertebral disc L3-L4"}}
+  l2: {span: true, parent: l3, trunk: true,    center: {type: centroid, mesh: "Intervertebral disc L2-L3"}}
+  l1: {span: true, parent: l2, trunk: true,    center: {type: centroid, mesh: "Intervertebral disc L1-L2"}}
+  thorax: {parent: l1, trunk: true, center: {type: centroid, mesh: "Intervertebral disc T12-L1"}}
+
+  # ---- 肩 ----
+  clavicle.{s}:
+    parent: thorax
+    center: {type: bone_extreme, bone: clavicle, dir: {medial: 1}}        # 胸锁关节
+    dofs:
+      - {name: clavicle_elevation, axis: [0, 0, 1], sign: -1}            # + = 锁骨外侧端上抬
+  scapula.{s}:
+    parent: clavicle.{s}
+    center: {type: bone_extreme, bone: clavicle, dir: {lateral: 1}}       # 肩锁关节
+    dofs:
+      - {name: scapula_upward, axis: [0, 0, 1], sign: -1}                # + = 肩胛上回旋（下角向外）
+  humerus.{s}:
+    parent: scapula.{s}
+    frame_from: thorax
+    center: {type: sphere_fit, bone: humerus, radius_mm: [18, 30]}        # 盂肱关节（肱骨头球心）
+    dofs:
+      - {name: shoulder_abduction, axis: [0, 0, 1], sign: -1}            # + = 外展
+      - {name: shoulder_flexion, axis: [1, 0, 0], sign: -1}              # + = 前屈，负值 = 后伸
+      - {name: shoulder_rotation_int, axis: [0, 1, 0], sign: 1}          # + = 内旋，负值 = 外旋
+
+  # ---- 髋 / 膝 ----
+  femur.{s}:
+    parent: pelvis
+    span: true
+    center: {type: sphere_fit, bone: femur, radius_mm: [18, 32]}          # 髋关节（股骨头球心）
+    dofs:
+      - {name: hip_abduction, axis: [0, 0, 1], sign: -1}                 # + = 外展，负值 = 内收
+      - {name: hip_flexion, axis: [1, 0, 0], sign: -1}                   # + = 屈，负值 = 伸
+      - {name: hip_rotation_int, axis: [0, 1, 0], sign: 1}               # + = 内旋，负值 = 外旋
+  tibia.{s}:
+    parent: femur.{s}
+    span: true
+    center: {type: knee_axis, bone: femur}
+    dofs:
+      - {name: knee_flexion, axis: [1, 0, 0], sign: 1}                   # + = 屈
+      - {name: knee_rotation_int, axis: [0, 1, 0], sign: 1}              # + = 胫骨内旋
+  patella.{s}:
+    parent: femur.{s}
+    center: {type: same_as, body: "tibia.{s}"}
+    dofs:
+      - {name: knee_flexion, axis: [1, 0, 0], sign: 1, share: 0.45}      # 髌骨沿股骨髁滑动，约为屈膝角的 0.45

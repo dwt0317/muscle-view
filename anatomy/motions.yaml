@@ -1,0 +1,232 @@
+# 动作库（示意级）。每个动作 = 一个参数滑块 + 关键帧（参数值 -> 各关节角度，线性插值）+ 每个方向的主动肌/拮抗肌/稳定肌。
+#
+# 内容依据 Kendall《Muscles: Testing and Function》、Neumann《Kinesiology of the Musculoskeletal System》，
+# 为整理稿，待临床确认（界面同样标注）。
+#
+# limb: right  -> 肢体动作只作用于右侧肢体（肌肉列表里的 id 指右侧肌肉）
+# limb: trunk  -> 躯干动作，双侧；肌肉 id 可加后缀 @ipsi / @contra，表示与运动方向同侧 / 对侧
+#                 无后缀 = 双侧
+# param        滑块：min/max/default，unit 为度。
+# play         播放时在 [a, b] 之间往返。
+# keyframes    at = 参数值；pose = 关节自由度（见 anatomy/skeleton.yaml），键为 pose 名，值为度。
+#              同一动作的所有关键帧必须使用相同的一组 pose 键。
+# directions   pos / neg：参数 >0 / <0 时的方向说明和肌肉角色（neg 可省略）。ipsi 只用于 trunk。
+#
+# 肩肱节律：肩外展/前屈的参数是"肱胸角"（手臂相对躯干），肩胛上回旋在 30° 后按 1:2 分担
+# （肱胸角每增加 3°，肩胛上回旋增加 1°），到 180° 时肩胛约 50°、盂肱约 130°，锁骨同步上抬约 15°。
+
+motions:
+  # ======================= 肩 =======================
+  - id: shoulder_abduction
+    region: shoulder
+    limb: right
+    name: {zh: 肩外展, en: Shoulder abduction}
+    param: {zh: 肱胸角, en: Humerothoracic angle, min: 0, max: 180, default: 0}
+    play: [0, 180]
+    keyframes:
+      - {at: 0,   pose: {r_shoulder_abduction: 0,   r_scapula_upward: 0,  r_clavicle_elevation: 0}}
+      - {at: 30,  pose: {r_shoulder_abduction: 30,  r_scapula_upward: 0,  r_clavicle_elevation: 3}}
+      - {at: 180, pose: {r_shoulder_abduction: 180, r_scapula_upward: 50, r_clavicle_elevation: 15}}
+    note: {zh: "含肩肱节律：30° 后肩胛上回旋与盂肱运动按 1:2 分担", en: "Includes scapulohumeral rhythm: beyond 30 degrees the scapula and glenohumeral joint share the motion 1:2"}
+    directions:
+      pos:
+        label: {zh: 外展, en: Abduction}
+        roles:
+          agonist: [deltoid_acromial, supraspinatus]
+          stabilizer: [trapezius_descending, trapezius_ascending, serratus_anterior, infraspinatus, teres_minor, subscapularis]
+          antagonist: [latissimus_dorsi, teres_major, pectoralis_major_sternocostal, pectoralis_major_abdominal]
+
+  - id: shoulder_flexion
+    region: shoulder
+    limb: right
+    name: {zh: 肩前屈 / 后伸, en: Shoulder flexion / extension}
+    param: {zh: 肱胸角, en: Humerothoracic angle, min: -60, max: 180, default: 0}
+    play: [0, 180]
+    keyframes:
+      - {at: -60, pose: {r_shoulder_flexion: -60, r_scapula_upward: 0,  r_clavicle_elevation: 0}}
+      - {at: 0,   pose: {r_shoulder_flexion: 0,   r_scapula_upward: 0,  r_clavicle_elevation: 0}}
+      - {at: 30,  pose: {r_shoulder_flexion: 30,  r_scapula_upward: 0,  r_clavicle_elevation: 3}}
+      - {at: 180, pose: {r_shoulder_flexion: 180, r_scapula_upward: 50, r_clavicle_elevation: 15}}
+    note: {zh: 正值为前屈，负值为后伸；肩胛节律同外展, en: "Positive = flexion, negative = extension; same scapular rhythm as abduction"}
+    directions:
+      pos:
+        label: {zh: 前屈, en: Flexion}
+        roles:
+          agonist: [deltoid_clavicular, pectoralis_major_clavicular, coracobrachialis, biceps_short]
+          stabilizer: [serratus_anterior, trapezius_descending, trapezius_ascending, infraspinatus, teres_minor]
+          antagonist: [deltoid_spinal, latissimus_dorsi, teres_major, triceps_long]
+      neg:
+        label: {zh: 后伸, en: Extension}
+        roles:
+          agonist: [latissimus_dorsi, teres_major, deltoid_spinal, triceps_long]
+          stabilizer: [rhomboid_major, rhomboid_minor, trapezius_transverse, infraspinatus, teres_minor]
+          antagonist: [deltoid_clavicular, pectoralis_major_clavicular, coracobrachialis, biceps_short, biceps_long]
+
+  - id: shoulder_rotation
+    region: shoulder
+    limb: right
+    name: {zh: 肩内旋 / 外旋, en: Shoulder internal / external rotation}
+    param: {zh: 旋转角, en: Rotation angle, min: -70, max: 70, default: 0}
+    play: [-70, 70]
+    keyframes:
+      - {at: -70, pose: {r_shoulder_rotation_int: -70}}
+      - {at: 70,  pose: {r_shoulder_rotation_int: 70}}
+    note: {zh: 上臂自然下垂位，正值为内旋，负值为外旋, en: "Arm at the side; positive = internal, negative = external rotation"}
+    directions:
+      pos:
+        label: {zh: 内旋, en: Internal rotation}
+        roles:
+          agonist: [subscapularis, pectoralis_major_sternocostal, latissimus_dorsi, teres_major]
+          stabilizer: [deltoid_clavicular, pectoralis_major_clavicular]
+          antagonist: [infraspinatus, teres_minor, deltoid_spinal]
+      neg:
+        label: {zh: 外旋, en: External rotation}
+        roles:
+          agonist: [infraspinatus, teres_minor, deltoid_spinal]
+          stabilizer: [trapezius_transverse, rhomboid_major, rhomboid_minor]
+          antagonist: [subscapularis, pectoralis_major_sternocostal, latissimus_dorsi, teres_major]
+
+  # ======================= 髋 =======================
+  - id: hip_flexion
+    region: hip
+    limb: right
+    name: {zh: 髋屈 / 伸, en: Hip flexion / extension}
+    param: {zh: 髋角度, en: Hip angle, min: -20, max: 120, default: 0}
+    play: [0, 110]
+    keyframes:
+      - {at: -20, pose: {r_hip_flexion: -20}}
+      - {at: 120, pose: {r_hip_flexion: 120}}
+    note: {zh: 正值为屈，负值为伸（骨盆固定）, en: "Positive = flexion, negative = extension (pelvis fixed)"}
+    directions:
+      pos:
+        label: {zh: 屈, en: Flexion}
+        roles:
+          agonist: [iliacus, psoas_major, rectus_femoris, sartorius, tensor_fasciae_latae, pectineus]
+          stabilizer: [adductor_longus, adductor_brevis, gracilis]
+          antagonist: [gluteus_maximus, semitendinosus, semimembranosus, biceps_femoris_long, adductor_magnus]
+      neg:
+        label: {zh: 伸, en: Extension}
+        roles:
+          agonist: [gluteus_maximus, semitendinosus, semimembranosus, biceps_femoris_long, adductor_magnus]
+          stabilizer: [gluteus_medius, gluteus_minimus]
+          antagonist: [iliacus, psoas_major, rectus_femoris, sartorius, tensor_fasciae_latae, pectineus]
+
+  - id: hip_abduction
+    region: hip
+    limb: right
+    name: {zh: 髋外展 / 内收, en: Hip abduction / adduction}
+    param: {zh: 髋角度, en: Hip angle, min: -30, max: 45, default: 0}
+    play: [0, 45]
+    keyframes:
+      - {at: -30, pose: {r_hip_abduction: -30}}
+      - {at: 45,  pose: {r_hip_abduction: 45}}
+    note: {zh: 正值为外展，负值为内收, en: "Positive = abduction, negative = adduction"}
+    directions:
+      pos:
+        label: {zh: 外展, en: Abduction}
+        roles:
+          agonist: [gluteus_medius, gluteus_minimus, tensor_fasciae_latae]
+          stabilizer: [gluteus_maximus, piriformis]
+          antagonist: [adductor_longus, adductor_brevis, adductor_magnus, pectineus, gracilis]
+      neg:
+        label: {zh: 内收, en: Adduction}
+        roles:
+          agonist: [adductor_longus, adductor_brevis, adductor_magnus, pectineus, gracilis]
+          stabilizer: [quadratus_femoris, obturator_externus]
+          antagonist: [gluteus_medius, gluteus_minimus, tensor_fasciae_latae]
+
+  # ======================= 膝 =======================
+  - id: knee_flexion
+    region: knee
+    limb: right
+    name: {zh: 膝屈 / 伸, en: Knee flexion / extension}
+    param: {zh: 膝角度, en: Knee angle, min: 0, max: 140, default: 0}
+    play: [0, 140]
+    keyframes:
+      - {at: 0,   pose: {r_knee_flexion: 0}}
+      - {at: 140, pose: {r_knee_flexion: 140}}
+    note: {zh: 0° = 伸直。屈膝时髌骨沿股骨髁下滑；滑块往回拉即为伸膝（股四头肌主动，腘绳肌拮抗）, en: "0 = straight. The patella glides down the femoral condyles; moving back is extension (quadriceps active, hamstrings antagonist)"}
+    directions:
+      pos:
+        label: {zh: 屈, en: Flexion}
+        roles:
+          agonist: [biceps_femoris_long, biceps_femoris_short, semitendinosus, semimembranosus]
+          stabilizer: [popliteus, gracilis, sartorius, gastrocnemius_medial, gastrocnemius_lateral]
+          antagonist: [rectus_femoris, vastus_lateralis, vastus_medialis, vastus_intermedius]
+
+  # ======================= 腰 =======================
+  - id: trunk_flexion
+    region: lumbar
+    limb: trunk
+    name: {zh: 腰前屈 / 后伸, en: Lumbar flexion / extension}
+    param: {zh: 躯干角度, en: Trunk angle, min: -25, max: 60, default: 0}
+    play: [0, 60]
+    keyframes:
+      - {at: -25, pose: {trunk_flexion: -25}}
+      - {at: 60,  pose: {trunk_flexion: 60}}
+    note: {zh: 角度按 L5…L1 与胸廓分摊；正值为前屈，负值为后伸, en: "The angle is shared between L5...L1 and the thorax; positive = flexion, negative = extension"}
+    directions:
+      pos:
+        label: {zh: 前屈, en: Flexion}
+        roles:
+          agonist: [rectus_abdominis, external_oblique, internal_oblique]
+          stabilizer: [transversus_abdominis, psoas_major, iliacus]
+          antagonist: [iliocostalis_lumborum, iliocostalis_thoracis, longissimus_thoracis, spinalis_thoracis, multifidus_lumborum, multifidus_thoracis, interspinales_lumborum]
+      neg:
+        label: {zh: 后伸, en: Extension}
+        roles:
+          agonist: [iliocostalis_lumborum, iliocostalis_thoracis, longissimus_thoracis, spinalis_thoracis, multifidus_lumborum, multifidus_thoracis, interspinales_lumborum]
+          stabilizer: [quadratus_lumborum, gluteus_maximus]
+          antagonist: [rectus_abdominis, external_oblique, internal_oblique]
+
+  - id: trunk_lateral
+    region: lumbar
+    limb: trunk
+    name: {zh: 腰侧屈, en: Lumbar lateral flexion}
+    param: {zh: 侧屈角, en: Side-bend angle, min: -35, max: 35, default: 0}
+    play: [-35, 35]
+    keyframes:
+      - {at: -35, pose: {trunk_lateral: -35}}
+      - {at: 35,  pose: {trunk_lateral: 35}}
+    note: {zh: 正值为向右侧屈，负值为向左侧屈, en: "Positive = bend to the right, negative = to the left"}
+    directions:
+      pos:
+        ipsi: r
+        label: {zh: 向右侧屈, en: Right lateral flexion}
+        roles:
+          agonist: [quadratus_lumborum@ipsi, external_oblique@ipsi, internal_oblique@ipsi, iliocostalis_lumborum@ipsi, longissimus_thoracis@ipsi]
+          stabilizer: [multifidus_lumborum, transversus_abdominis]
+          antagonist: [quadratus_lumborum@contra, external_oblique@contra, internal_oblique@contra, iliocostalis_lumborum@contra, longissimus_thoracis@contra]
+      neg:
+        ipsi: l
+        label: {zh: 向左侧屈, en: Left lateral flexion}
+        roles:
+          agonist: [quadratus_lumborum@ipsi, external_oblique@ipsi, internal_oblique@ipsi, iliocostalis_lumborum@ipsi, longissimus_thoracis@ipsi]
+          stabilizer: [multifidus_lumborum, transversus_abdominis]
+          antagonist: [quadratus_lumborum@contra, external_oblique@contra, internal_oblique@contra, iliocostalis_lumborum@contra, longissimus_thoracis@contra]
+
+  - id: trunk_rotation
+    region: lumbar
+    limb: trunk
+    name: {zh: 躯干旋转, en: Trunk rotation}
+    param: {zh: 旋转角, en: Rotation angle, min: -40, max: 40, default: 0}
+    play: [-40, 40]
+    keyframes:
+      - {at: -40, pose: {trunk_rotation: -40}}
+      - {at: 40,  pose: {trunk_rotation: 40}}
+    note: {zh: 正值为向右旋转，负值为向左旋转；腰椎旋转范围小，主要发生在胸段, en: "Positive = rotate right, negative = left; lumbar rotation is small, most of it happens in the thoracic spine"}
+    directions:
+      pos:
+        ipsi: r
+        label: {zh: 向右旋转, en: Rotation to the right}
+        roles:
+          agonist: [external_oblique@contra, internal_oblique@ipsi, multifidus_lumborum@contra, rotatores@contra, semispinalis_thoracis@contra]
+          stabilizer: [transversus_abdominis, rectus_abdominis]
+          antagonist: [external_oblique@ipsi, internal_oblique@contra, multifidus_lumborum@ipsi, rotatores@ipsi, semispinalis_thoracis@ipsi]
+      neg:
+        ipsi: l
+        label: {zh: 向左旋转, en: Rotation to the left}
+        roles:
+          agonist: [external_oblique@contra, internal_oblique@ipsi, multifidus_lumborum@contra, rotatores@contra, semispinalis_thoracis@contra]
+          stabilizer: [transversus_abdominis, rectus_abdominis]
+          antagonist: [external_oblique@ipsi, internal_oblique@contra, multifidus_lumborum@ipsi, rotatores@ipsi, semispinalis_thoracis@ipsi]

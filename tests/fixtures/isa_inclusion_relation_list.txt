@@ -1,0 +1,3 @@
+parent id	parent name	child id	child name
+FMA9629	supraspinatus	FMA32544	right supraspinatus
+FMA9629	supraspinatus	FMA32545	left supraspinatus
